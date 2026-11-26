@@ -73,4 +73,5 @@ Die Szenenbilder (`scenes/sceneNN.webp`, 240 px, Santa 520 px breit), das Vorsch
 ## Rechtliches
 
 Garmin, Connect IQ und die Gerätenamen sind Marken von Garmin Ltd. Diese Seite steht in keiner Verbindung zu Garmin.
-Schriften: Big Shoulders Display und Atkinson Hyperlegible, SIL Open Font License 1.1.
+Design und Logo: CodeBear (aus dem Projekt Garmin Dashboard). Schriften: Big Shoulders Display, Instrument Sans,
+JetBrains Mono, SIL Open Font License 1.1.

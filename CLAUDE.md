@@ -19,12 +19,14 @@ Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen au
 - Nur HTML, CSS, JavaScript. Kein Server, kein Build, keine API-Schlüssel im Code.
 - GitHub Pages, Ordner `/demo`, nur relative Links.
 - Payment Link als **eine Konstante oben in `demo/config.js`** (`PAYMENT_LINK`).
-- Deutsch, dunkles Design („Winternacht“: Tannengrün, Rot, Gold wie die Werbebilder), mobil lesbar.
+- Deutsch, dunkles Design, mobil lesbar. Seit 27.11.2026 im **CodeBear-Stil** (User): Logo und Tokens aus
+  `../../Garmin Dashboard` (Grafit, Körnung, Big Shoulders Display, Instrument Sans, JetBrains Mono, Akzent `#c8f53c`).
+  Vorherige Fassung „Winternacht“: Tag `design-winternacht`.
 - Auf jeder Seite: **„Testmodus, kein echter Shop“**.
 - `datenschutz.html` mit Platzhaltertext und Impressum (Abschnitt `#impressum`, Platzhalter).
 - Preis: **2,49 USD (Demo)**. Schlüssel gilt für **2 Geräte** (Activations Limit im Dodo-Dashboard).
 - `erfolg.html` zeigt **nur den Dodo-Schlüssel**. Der feste Code der Watch-Face steht **nirgends** auf der Webseite.
-- Schriften selbst gehostet (`demo/assets/fonts/`, OFL), keine Anfragen an fremde Server außer dem Dodo-Checkout.
+- Schriften und Bären-Logo selbst gehostet (`demo/assets/fonts/`, OFL; `demo/assets/img/brand/`), keine Anfragen an fremde Server außer dem Dodo-Checkout.
 
 ## Dodo (Testmodus, vom User, 27.11.2026)
 
