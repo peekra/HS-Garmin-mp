@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <title>Dein Lizenzschlüssel – GasDefizit XMas (Demo-Shop)</title>
+  <meta name="theme-color" content="#123a2e">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+  <div class="sky" aria-hidden="true"></div>
+
+  <div class="testmode" role="note">
+    <div class="wrap testmode__inner">
+      <strong>Testmodus, kein echter Shop</strong>
+      <span>Studienprojekt. Bezahlt wird mit Testkarten, es fließt kein echtes Geld.</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-label="GasDefizit XMas, Startseite">
+        <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="#fff" d="M13.5 2 5 13.5h5.5L9.5 22 19 9.5h-5.6z"/></svg></span>
+        <span>GasDefizit <span class="brand__x">XMas</span></span>
+      </a>
+    </div>
+  </header>
+
+  <main id="inhalt" class="wrap">
+    <!-- Exactly one state is shown by erfolg.js. Without JavaScript only the noscript text appears. -->
+    <section class="result state rise rise--1" data-state="success" hidden aria-labelledby="t-success">
+      <span class="status-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg></span>
+      <p class="eyebrow">Danke für deinen Kauf</p>
+      <h1 id="t-success">Zahlung erfolgreich</h1>
+      <p class="lead" data-key-intro>Dein Lizenzschlüssel für GasDefizit XMas. Er gilt für 2 Geräte und kommt auch per E-Mail.</p>
+      <ul class="keys" data-keys></ul>
+      <p class="meta" data-payment hidden></p>
+    </section>
+
+    <section class="result state rise rise--1" data-state="paid-nokey" hidden aria-labelledby="t-paid">
+      <span class="status-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg></span>
+      <p class="eyebrow">Danke für deinen Kauf</p>
+      <h1 id="t-paid">Zahlung erfolgreich</h1>
+      <p class="lead">Die Adresse enthält keinen Lizenzschlüssel. Du findest ihn in der E-Mail von Dodo Payments, schau auch im Spam-Ordner nach.</p>
+    </section>
+
+    <section class="result state rise rise--1" data-state="pending" hidden aria-labelledby="t-pending">
+      <span class="status-icon status-icon--wait" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4.5l3 2"/></svg></span>
+      <p class="eyebrow">Einen Moment</p>
+      <h1 id="t-pending">Zahlung wird noch bearbeitet</h1>
+      <p class="lead">Dodo Payments hat die Zahlung noch nicht abgeschlossen. Sobald sie durch ist, bekommst du den Lizenzschlüssel per E-Mail.</p>
+    </section>
+
+    <section class="result state rise rise--1" data-state="failed" hidden aria-labelledby="t-failed">
+      <span class="status-icon status-icon--warn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7 7 17"/></svg></span>
+      <p class="eyebrow">Kein Kauf</p>
+      <h1 id="t-failed">Zahlung nicht abgeschlossen</h1>
+      <p class="lead">Die Zahlung ist fehlgeschlagen oder abgelaufen. Es wurde nichts berechnet. Du kannst es auf der Startseite noch einmal versuchen.</p>
+    </section>
+
+    <section class="result state rise rise--1" data-state="none" hidden aria-labelledby="t-none">
+      <span class="status-icon status-icon--wait" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></span>
+      <p class="eyebrow">Lizenzschlüssel</p>
+      <h1 id="t-none">Kein Schlüssel in der Adresse</h1>
+      <p class="lead">Diese Seite zeigt den Schlüssel direkt nach der Zahlung. Hast du schon gekauft, steht er in der E-Mail von Dodo Payments.</p>
+    </section>
+
+    <noscript>
+      <section class="result">
+        <h1>Lizenzschlüssel</h1>
+        <p class="lead">Diese Seite braucht JavaScript, um den Schlüssel aus der Adresse zu lesen. Du findest ihn auch in der E-Mail von Dodo Payments.</p>
+      </section>
+    </noscript>
+
+    <section class="next rise rise--3" data-next hidden aria-labelledby="t-next">
+      <h2 id="t-next">Nächste Schritte</h2>
+      <ol class="steps">
+        <li class="step"><h3>Watch-Face installieren</h3><p>GasDefizit XMas aus dem Connect IQ Store auf die Uhr laden, falls noch nicht geschehen.</p></li>
+        <li class="step"><h3>Schlüssel eintragen</h3><p><span class="path">Connect-IQ-App › Meine Watch Faces › GasDefizit XMas › Einstellungen › Aktivierungscode</span></p></li>
+        <li class="step"><h3>Speichern und synchronisieren</h3><p>Handy online und mit der Uhr verbunden lassen, bis die Uhr den Schlüssel geprüft hat. Danach bleibt sie frei, auch offline.</p></li>
+        <li class="step"><h3>Status prüfen</h3><p>Auf der Uhr: Menü „Anpassen“ der Watch-Face › „Status“ zeigt „Freigeschaltet“. Ein Schlüssel reicht für 2 Geräte.</p></li>
+      </ol>
+    </section>
+
+    <div class="actions">
+      <a class="btn btn--ghost" href="index.html">Zurück zur Startseite</a>
+      <a class="btn" data-retry href="index.html#kaufen" hidden>Noch einmal versuchen</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><strong>Testmodus, kein echter Shop.</strong> Studienprojekt an der Technischen Hochschule Augsburg, Kurs „Design und Implementierung e-Shop“.</p>
+      <nav aria-label="Rechtliches">
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="datenschutz.html#impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="erfolg.js"></script>
+</body>
+</html>

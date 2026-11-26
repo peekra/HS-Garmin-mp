@@ -1,0 +1,57 @@
+# CLAUDE.md – Demo-Shop „GasDefizit XMas“
+
+Statische Demo-Webseite für eine Studentenarbeit (THA Augsburg, „Design und Implementierung e-Shop“). Sie verkauft
+die Freischaltung der Watch-Face **GasDefizit XMas** (Projekt `../Weinachten_GasDefizit`). Bezahlt wird über
+**Dodo Payments im Testmodus**. Wenn etwas hier nicht geregelt ist: den User fragen, nichts erfinden.
+
+Sprache: Kommunikation, diese Datei und die Webseite **Deutsch**; Code-Kommentare und Commits Englisch.
+Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen auf GitHub macht der User.
+
+## Ablauf
+
+1. `demo/index.html`: Produktseite mit Vorschau, Funktionen, Preis, Button „Buy now“ = Link auf den Dodo Payment Link.
+2. Dodo leitet nach der Zahlung auf `demo/erfolg.html` weiter (`redirect_url`).
+3. `erfolg.html` liest `license_key` (bei mehreren durch Komma getrennt) und `status` aus der Adresse, zeigt den
+   Schlüssel mit „Schlüssel kopieren“ und erklärt die nächsten Schritte.
+
+## Vorgaben (User, 27.11.2026)
+
+- Nur HTML, CSS, JavaScript. Kein Server, kein Build, keine API-Schlüssel im Code.
+- GitHub Pages, Ordner `/demo`, nur relative Links.
+- Payment Link als **eine Konstante oben in `demo/config.js`** (`PAYMENT_LINK`).
+- Deutsch, dunkles Design („Winternacht“: Tannengrün, Rot, Gold wie die Werbebilder), mobil lesbar.
+- Auf jeder Seite: **„Testmodus, kein echter Shop“**.
+- `datenschutz.html` mit Platzhaltertext und Impressum (Abschnitt `#impressum`, Platzhalter).
+- Preis: **2,49 USD (Demo)**. Schlüssel gilt für **2 Geräte** (Activations Limit im Dodo-Dashboard).
+- `erfolg.html` zeigt **nur den Dodo-Schlüssel**. Der feste Code der Watch-Face steht **nirgends** auf der Webseite.
+- Schriften selbst gehostet (`demo/assets/fonts/`, OFL), keine Anfragen an fremde Server außer dem Dodo-Checkout.
+
+## Dodo (Testmodus, vom User, 27.11.2026)
+
+- Produkt „Watch Face Aktivierung“, ID `pdt_0Nso99dTIRu8KDlkyHrUO` (Teil B: Watch-Face prüft diese ID bei `activate`).
+- Payment Link: `https://test.checkout.dodopayments.com/buy/pdt_0Nso99dTIRu8KDlkyHrUO?quantity=1`
+- Im Dashboard noch zu prüfen (User): Preis 2,49 USD, License-Key-Berechtigung mit Activations Limit 2.
+
+## Grenzen (dem User gesagt)
+
+- `erfolg.html` ist kein Kaufnachweis, die Adresse ist fälschbar. Geprüft wird später auf der Uhr.
+- Bis die Watch-Face v1.1.0 den Dodo-Schlüssel online prüft (Teil B), schaltet der Schlüssel auf der Uhr nichts frei.
+- Freischalten geht nur bei Installation aus dem Store oder der Beta (Handy-Einstellungen).
+
+## Dateien
+
+```
+demo/index.html, erfolg.html, datenschutz.html
+demo/config.js      PAYMENT_LINK (+ STORE_URL), sonst nichts
+demo/app.js         Buy-Link (ergänzt redirect_url), Zählwerk-Uhr, Santa-Flug
+demo/erfolg.js      Parameter lesen, anzeigen, kopieren
+demo/style.css
+demo/assets/        img/ (aus tools/render_web_assets.swift), fonts/
+tools/render_web_assets.swift   Bilder aus ../Weinachten_GasDefizit/design/promo_captures
+```
+
+Bilder neu erzeugen:
+
+```bash
+swiftc -O tools/render_web_assets.swift -o /tmp/render_web_assets && /tmp/render_web_assets
+```
