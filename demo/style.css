@@ -97,6 +97,7 @@ body::after {
 body > * { position: relative; z-index: 1; }
 
 h1, h2, h3, p, ul, ol, figure { margin: 0; }
+[hidden] { display: none !important; }
 img, svg { display: block; max-width: 100%; height: auto; }
 
 a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 4px; }
@@ -806,7 +807,9 @@ td, thead th:not(:first-child) { width: 4.6rem; text-align: center; }
   padding: clamp(20px, 3vw, 32px);
 }
 .cta h2 { margin-top: 8px; font-size: clamp(36px, 5vw, 60px); }
-.cta p { font-size: 15px; color: var(--ink-2); }
+.cta p { margin-top: 12px; font-size: 15px; color: var(--ink-2); }
+.cta__buy .buy-note, .cta__buy [data-store] { margin-top: 0; }
+@media (min-width: 640px) { .cta .price-card__row { justify-content: flex-end; } }
 .cta__buy { display: grid; gap: 12px; justify-items: start; }
 .cta .price { display: block; }
 

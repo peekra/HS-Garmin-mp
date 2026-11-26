@@ -53,7 +53,7 @@
   }
   if (state === "success") {
     renderKeys();
-    document.title = "Zahlung erfolgreich – GasDefizit XMas (Demo-Shop)";
+    document.title = "Zahlung erfolgreich – GasDefizit XMas · CodeBear Demo-Shop";
   }
 
   function renderKeys() {
