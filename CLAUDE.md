@@ -24,7 +24,8 @@ Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen au
   Vorherige Fassung „Winternacht“: Tag `design-winternacht`.
 - Auf jeder Seite: **„Testmodus, kein echter Shop“**.
 - `datenschutz.html` mit Platzhaltertext und Impressum (Abschnitt `#impressum`, Platzhalter).
-- Preis: **2,49 USD (Demo)**. Schlüssel gilt für **2 Geräte** (Activations Limit im Dodo-Dashboard).
+- Preis: **2,49 € (Demo)** (User, 27.11.2026, ersetzt 2,49 USD). Schlüssel gilt für **2 Geräte** (Activations Limit im
+  Dodo-Dashboard).
 - `erfolg.html` zeigt **nur den Dodo-Schlüssel**. Der feste Code der Watch-Face steht **nirgends** auf der Webseite.
 - Schriften und Bären-Logo selbst gehostet (`demo/assets/fonts/`, OFL; `demo/assets/img/brand/`), keine Anfragen an fremde Server außer dem Dodo-Checkout.
 
@@ -32,7 +33,10 @@ Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen au
 
 - Produkt „Watch Face Aktivierung“, ID `pdt_0Nso99dTIRu8KDlkyHrUO` (Teil B: Watch-Face prüft diese ID bei `activate`).
 - Payment Link: `https://test.checkout.dodopayments.com/buy/pdt_0Nso99dTIRu8KDlkyHrUO?quantity=1`
-- Im Dashboard noch zu prüfen (User): Preis 2,49 USD, License-Key-Berechtigung mit Activations Limit 2.
+- Grundpreis im Dashboard: 2,49 EUR inklusive Steuern. Ein lokalisierter Länderpreis überschreibt ihn: Am 27.11.2026
+  zeigte der Checkout für Deutschland 0,99 €, für Österreich 2,49 €. Der User hat das angepasst; danach zeigte der
+  Checkout für Deutschland 2,49 € (geprüft am 27.11.2026).
+- Im Dashboard noch zu prüfen (User): License-Key-Berechtigung mit Activations Limit 2.
 
 ## Grenzen (dem User gesagt)
 

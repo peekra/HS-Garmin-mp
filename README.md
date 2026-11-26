@@ -21,7 +21,8 @@ Nur HTML, CSS und JavaScript: kein Build, kein Server, keine API-Schlüssel. All
 
 ## Dodo Payments einrichten (Testmodus)
 
-1. Im Dodo-Dashboard (Test Mode) ein Einmal-Produkt anlegen, Preis **2,49 USD**.
+1. Im Dodo-Dashboard (Test Mode) ein Einmal-Produkt anlegen, Preis **2,49 EUR** inklusive Steuern. Ein eigener
+   Länderpreis unter „Lokalisierte Preisgestaltung“ würde diesen Preis für das Land überschreiben.
 2. Dem Produkt eine **License-Key**-Berechtigung geben: automatische Ausgabe, **Activations Limit 2**.
 3. Den Payment Link des Produkts in `demo/config.js` als `PAYMENT_LINK` eintragen.
    Aktuell: `https://test.checkout.dodopayments.com/buy/pdt_0Nso99dTIRu8KDlkyHrUO?quantity=1`
