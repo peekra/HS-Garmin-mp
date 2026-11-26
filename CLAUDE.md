@@ -20,7 +20,8 @@ Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen au
 - GitHub Pages, Ordner `/demo`, nur relative Links.
 - Payment Link als **eine Konstante oben in `demo/config.js`** (`PAYMENT_LINK`).
 - Deutsch, dunkles Design, mobil lesbar. Seit 27.11.2026 im **CodeBear-Stil** (User): Logo und Tokens aus
-  `../../Garmin Dashboard` (Grafit, Körnung, Big Shoulders Display, Instrument Sans, JetBrains Mono, Akzent `#c8f53c`).
+  `../../Garmin Dashboard` (Grafit, Körnung, Big Shoulders Display, Instrument Sans, JetBrains Mono).
+  **Hauptfarbe ist das Logo-Orange `#ff4d0a`** (User, 27.11.2026), nicht das Grün `#c8f53c` des Dashboards.
   Vorherige Fassung „Winternacht“: Tag `design-winternacht`.
 - Auf jeder Seite: **„Testmodus, kein echter Shop“**.
 - `datenschutz.html` mit Platzhaltertext und Impressum (Abschnitt `#impressum`, Platzhalter).

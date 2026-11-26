@@ -44,12 +44,13 @@
   --warn: #f5b42a;
   --bad: #ef6b6b;
 
-  --accent: #c8f53c;
-  --on-accent: #101113;
-
   /* CodeBear logo: bear and "Bear" white, "Code" orange */
   --brand-bear: #ffffff;
   --brand-code: #ff4d0a;
+
+  /* main color of the shop: the logo orange; dark text on it keeps the contrast above 4.5:1 */
+  --accent: var(--brand-code);
+  --on-accent: #101113;
 
   /* product colors (meter seconds and marker, as on the watch face) */
   --meter-red: #d8262e;
