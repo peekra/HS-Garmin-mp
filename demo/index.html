@@ -98,12 +98,18 @@
               <li>Lizenzschlüssel für 2 Aktivierungen</li>
               <li>Die Watch-Face selbst ist gratis</li>
             </ul>
+            <p class="testdata"><strong>Testmodus:</strong> Gib keinen echten Namen, keine echte Adresse und keine echte Karte ein. Testkarte: <code>4242 4242 4242 4242</code>, <code>06/32</code>, CVC <code>123</code>.</p>
+            <label class="consent">
+              <input type="checkbox" data-consent aria-describedby="consent-note-1">
+              <span>Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen. Ich verwende nur Testdaten.</span>
+            </label>
+            <p class="buy-note" id="consent-note-1" data-consent-note aria-live="polite" hidden></p>
             <a class="btn btn--xl" data-buy href="#kaufen">
               Buy now
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
             <p class="buy-note" data-buy-note hidden></p>
-            <p class="fineprint">Die Zahlung läuft über Dodo Payments im Testmodus. Danach zeigt dir die nächste Seite deinen Lizenzschlüssel, per E-Mail kommt er auch. Es gelten die <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a> und der <a href="datenschutz.html">Datenschutz</a>.</p>
+            <p class="fineprint">Die Zahlung läuft über Dodo Payments im Testmodus. Danach zeigt dir die nächste Seite deinen Lizenzschlüssel. Kopiere ihn dort: Mit einer erfundenen E-Mail-Adresse kommt keine E-Mail an. Es gelten die <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a> und der <a href="datenschutz.html">Datenschutz</a>.</p>
           </div>
         </div>
 
@@ -213,7 +219,7 @@
         </div>
         <ol class="steps">
           <li class="step reveal"><h3>Kaufen</h3><p>„Buy now“ antippen und im Testmodus mit einer Testkarte bezahlen.</p></li>
-          <li class="step reveal"><h3>Schlüssel kopieren</h3><p>Nach der Zahlung zeigt dir die Seite deinen Lizenzschlüssel. Er kommt auch per E-Mail.</p></li>
+          <li class="step reveal"><h3>Schlüssel kopieren</h3><p>Nach der Zahlung zeigt dir die Seite deinen Lizenzschlüssel. Kopiere ihn sofort, mit erfundener E-Mail-Adresse kommt keine E-Mail an.</p></li>
           <li class="step reveal"><h3>In Connect IQ eintragen</h3><p><span class="path">Connect-IQ-App › Meine Watch Faces › GasDefizit XMas › Einstellungen › Aktivierungscode</span></p></li>
           <li class="step reveal"><h3>Speichern und synchronisieren</h3><p>Lass das Handy online und mit der Uhr verbunden, bis die Uhr den Schlüssel geprüft hat. Das kann bis zu 5 Minuten dauern. Danach bleibt sie frei, auch offline.</p></li>
         </ol>
@@ -233,6 +239,14 @@
             <p>Nein. Die Seite gehört zu einer Studienarbeit an der Technischen Hochschule Augsburg („Design und Implementierung e-Shop“). Dodo Payments läuft im Testmodus, du bezahlst mit einer Testkarte und es wird nichts abgebucht.</p>
           </details>
           <details>
+            <summary>Mit welcher Karte bezahle ich?</summary>
+            <p>Nutze die Testkarte von Dodo Payments: Kartennummer <code>4242 4242 4242 4242</code>, Ablaufdatum <code>06/32</code>, CVC <code>123</code>. Gib keine echte Karte ein. Eine echte Karte lehnt der Testmodus ab („Your card was declined“). Quelle: <a href="https://docs.dodopayments.com/miscellaneous/testing-process">Dodo-Dokumentation zum Testen</a>.</p>
+          </details>
+          <details>
+            <summary>Welche Daten gebe ich bei der Zahlung ein?</summary>
+            <p>Nur erfundene Daten. Gib keinen echten Namen, keine echte E-Mail-Adresse und keine echte Anschrift ein. Dies ist eine Studienarbeit im Testmodus, kein echter Kauf. Den Lizenzschlüssel zeigt dir die Seite nach der Zahlung. Kopiere ihn dort.</p>
+          </details>
+          <details>
             <summary>Auf welchen Uhren läuft die Watch-Face?</summary>
             <p>Auf 40 runden AMOLED-Uhren von Garmin mit Connect IQ 5.2 oder neuer, zum Beispiel Forerunner 165, 265 und 965, Venu 3, vívoactive 5 und 6, fēnix 8 und epix Pro. Uhren mit MIP-Display sind nicht dabei.</p>
           </details>
@@ -250,7 +264,7 @@
           </details>
           <details>
             <summary>Ich habe meinen Schlüssel verloren.</summary>
-            <p>Er steht in der E-Mail, die du nach der Zahlung bekommen hast. Schau auch im Spam-Ordner nach.</p>
+            <p>Die Seite nach der Zahlung zeigt ihn nur einmal. Mit erfundener E-Mail-Adresse bekommst du keine E-Mail. Im Testmodus kaufst du einfach noch einmal mit der Testkarte. Das kostet nichts.</p>
           </details>
         </div>
       </div>
@@ -269,6 +283,11 @@
               <span class="price">2,49 <small>€</small></span>
               <span class="badge badge--accent">Demo</span>
             </div>
+            <label class="consent">
+              <input type="checkbox" data-consent aria-describedby="consent-note-2">
+              <span>Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen. Ich verwende nur Testdaten.</span>
+            </label>
+            <p class="buy-note" id="consent-note-2" data-consent-note aria-live="polite" hidden></p>
             <a class="btn btn--xl" data-buy href="#kaufen">
               Buy now
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>

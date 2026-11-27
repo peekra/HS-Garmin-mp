@@ -34,8 +34,7 @@
     for (var i = 0; i < buttons.length; i++) {
       var btn = buttons[i];
       if (result.url) {
-        btn.href = result.url;
-        btn.removeAttribute("aria-disabled");
+        setupConsent(btn, result.url);
       } else {
         btn.removeAttribute("href");
         btn.setAttribute("role", "link");
@@ -47,6 +46,48 @@
       notes[j].hidden = !result.reason;
       notes[j].textContent = result.reason || "";
     }
+  }
+
+  // The buy button leads to the checkout only while its checkbox (privacy notice read, test data only) is ticked.
+  // Unticked, the link points to the price card, so middle click or "copy link" do not reach the checkout either.
+  // The page neither stores nor sends the tick. Opening the payment link directly still bypasses it.
+  function setupConsent(btn, url) {
+    var box = btn.parentNode.querySelector("[data-consent]");
+    var note = btn.parentNode.querySelector("[data-consent-note]");
+    if (!box) {
+      btn.href = url;
+      return;
+    }
+
+    function sync() {
+      if (box.checked) {
+        btn.href = url;
+        btn.classList.remove("is-locked");
+        if (note) {
+          note.hidden = true;
+          note.textContent = "";
+        }
+      } else {
+        btn.href = "#kaufen";
+        btn.classList.add("is-locked");
+      }
+    }
+
+    btn.addEventListener("click", function (ev) {
+      if (box.checked) {
+        return;
+      }
+      ev.preventDefault();
+      if (note) {
+        note.textContent = "Bitte setze zuerst den Haken: Datenschutzerklärung gelesen, nur Testdaten.";
+        note.hidden = false;
+      }
+      box.focus();
+    });
+    box.addEventListener("change", sync);
+    // the browser may restore the tick after "back"
+    window.addEventListener("pageshow", sync);
+    sync();
   }
 
   function setupStoreLink() {

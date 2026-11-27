@@ -31,6 +31,13 @@ Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen au
   sind der Link für den Connect-IQ-Store-Eintrag.
 - Preis: **2,49 € (Demo)** (User, 27.11.2026, ersetzt 2,49 USD). Schlüssel gilt für **2 Aktivierungen** (Activations Limit im
   Dodo-Dashboard); auch Neuinstallation und Beta verbrauchen je eine.
+- **Nur Testdaten** (User, 27.11.2026): Testkarte von Dodo (`4242 4242 4242 4242`, `06/32`, CVC `123`) in „Fragen“,
+  in der Preiskarte, auf `erfolg.html` (fehlgeschlagen) und in `datenschutz.html#testmodus`. Hinweis: keine echten
+  Namen und Daten. Mit erfundener E-Mail kommt keine E-Mail, die Texte sagen „Schlüssel sofort kopieren“.
+  Der Hinweis nimmt dem Anbieter die Verantwortung für den Datenschutz **nicht** ab (dem User gesagt).
+- **Haken vor dem Kauf** (User, 27.11.2026): je Kauf-Button ein Haken „Datenschutzerklärung gelesen, nur Testdaten“
+  (`data-consent`, `app.js` `setupConsent`). Ohne Haken zeigt der Button auf `#kaufen` und meldet den Hinweis. Nicht
+  gespeichert, nicht gesendet. Der direkte Payment Link umgeht ihn (ohne Server nicht zu verhindern).
 - `erfolg.html` zeigt **nur den Dodo-Schlüssel**. Der feste Code der Watch-Face steht **nirgends** auf der Webseite.
 - Schriften und Bären-Logo selbst gehostet (`demo/assets/fonts/`, OFL; `demo/assets/img/brand/`), keine Anfragen an fremde Server außer dem Dodo-Checkout.
 

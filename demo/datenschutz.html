@@ -46,13 +46,23 @@
       <h2>3. Keine Cookies, kein Tracking</h2>
       <p>Die Seite setzt keine Cookies und nutzt keine Analyse- oder Werbedienste. Schriften und Bilder liegen auf demselben Server, es werden keine Inhalte von fremden Servern nachgeladen.</p>
 
-      <h2>4. Bezahlung über Dodo Payments</h2>
-      <p>„Buy now“ führt zur Bezahlseite von Dodo Payments. Dodo Payments ist Verkäufer der Bestellung (Merchant of Record) und verarbeitet die dort eingegebenen Daten wie Name, E-Mail-Adresse und Zahlungsdaten eigenverantwortlich. Es gilt die Datenschutzerklärung von Dodo Payments. Diese Demo läuft im Testmodus: Es werden nur Testkarten verwendet.</p>
+      <h2 id="testmodus">4. Testmodus: keine echten Daten</h2>
+      <p>Dieser Shop ist eine Studienarbeit im Testmodus. Es gibt keinen echten Kauf, und es wird kein Geld abgebucht.</p>
+      <ul>
+        <li>Gib bei der Zahlung <strong>keinen echten Namen, keine echte E-Mail-Adresse, keine echte Anschrift und keine echte Karte</strong> ein.</li>
+        <li>Nutze erfundene Angaben und die Testkarte von Dodo Payments: <code>4242 4242 4242 4242</code>, Ablaufdatum <code>06/32</code>, CVC <code>123</code>.</li>
+        <li>Mit einer erfundenen E-Mail-Adresse bekommst du keine E-Mail. Den Lizenzschlüssel zeigt dir die Seite nach der Zahlung.</li>
+      </ul>
+      <p>Gibst du trotzdem echte Daten ein, verarbeitet Dodo Payments sie wie in Abschnitt 5 beschrieben.</p>
 
-      <h2>5. Seite nach der Zahlung</h2>
+      <h2>5. Bezahlung über Dodo Payments</h2>
+      <p>„Buy now“ führt zur Bezahlseite von Dodo Payments. Dodo Payments ist Verkäufer der Bestellung (Merchant of Record) und verarbeitet die dort eingegebenen Daten wie Name, E-Mail-Adresse und Zahlungsdaten eigenverantwortlich. Es gilt die Datenschutzerklärung von Dodo Payments.</p>
+      <p><strong>Haken vor dem Kauf:</strong> Vor „Buy now“ bestätigst du mit einem Haken, dass du diese Datenschutzerklärung gelesen hast und nur Testdaten verwendest. Erst dann führt der Button zu Dodo Payments. Der Haken bleibt in deinem Browser. Die Seite speichert ihn nicht und sendet ihn nicht.</p>
+
+      <h2>6. Seite nach der Zahlung</h2>
       <p>Nach der Zahlung leitet Dodo Payments auf <a href="erfolg.html">erfolg.html</a> weiter und hängt Zahlungsstatus, Zahlungs-ID, E-Mail-Adresse und Lizenzschlüssel an die Adresse an. Die Seite liest diese Werte nur im Browser. Die E-Mail-Adresse wird sofort aus der Adresszeile entfernt, und an andere Seiten wird keine Herkunftsadresse weitergegeben. Die Webseite speichert nichts davon.</p>
 
-      <h2 id="watch-face">6. Watch-Face GasDefizit XMas</h2>
+      <h2 id="watch-face">7. Watch-Face GasDefizit XMas</h2>
       <p><strong>Gesundheits- und Aktivitätsdaten</strong> (Puls, Schritte, Kalorien, VO2max, Wochenstrecken und Trainingszeiten) liest die Watch-Face nur, um sie auf der Uhr anzuzeigen. Sie verlassen die Uhr nicht und werden nicht an CodeBear oder Dritte gesendet.</p>
       <p><strong>Aktivierungscode:</strong> Der feste Aktivierungscode wird nur auf der Uhr geprüft. Dabei wird nichts gesendet.</p>
       <p><strong>Lizenzschlüssel:</strong> Nur wenn du einen Lizenzschlüssel in die Einstellungen einträgst, sendet die Uhr über die Garmin-Connect-App deines Handys eine Anfrage an Dodo Payments (<code>test.dodopayments.com</code>), um den Schlüssel zu aktivieren. Gesendet werden:</p>
@@ -64,7 +74,7 @@
       <p><strong>Auf der Uhr gespeichert</strong> bleiben der eingetragene Schlüssel (in den Einstellungen der Watch-Face, die Garmin zwischen Handy und Uhr abgleicht), der Stand der Prüfung und ob die Uhr freigeschaltet ist. Alles wird gelöscht, wenn du die Watch-Face deinstallierst. Den Aktivierungseintrag bei Dodo Payments löschen wir auf Anfrage <span class="ph">[Ablauf ergänzen]</span>.</p>
       <p>Rechtsgrundlage für die Prüfung des Schlüssels ist die Erfüllung des Vertrags über die Freischaltung (Art. 6 Abs. 1 lit. b DSGVO). Für die Übertragung zwischen Uhr, Handy und Internet gilt zusätzlich die Datenschutzerklärung von Garmin.</p>
 
-      <h2>7. Deine Rechte</h2>
+      <h2>8. Deine Rechte</h2>
       <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung, auf Datenübertragbarkeit und auf Widerspruch sowie das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Schreib uns dazu an die E-Mail-Adresse im Impressum. <span class="ph">[Zuständige Aufsichtsbehörde ergänzen]</span></p>
 
       <h2 id="impressum">Impressum</h2>

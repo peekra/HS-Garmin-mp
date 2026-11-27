@@ -60,7 +60,7 @@
     var list = document.querySelector("[data-keys]");
     if (keys.length > 1) {
       document.querySelector("[data-key-intro]").textContent =
-        "Deine Lizenzschlüssel für GasDefizit XMas. Jeder gilt für 2 Aktivierungen, per E-Mail kommen sie auch.";
+        "Deine Lizenzschlüssel für GasDefizit XMas. Jeder gilt für 2 Aktivierungen. Kopiere sie jetzt: Mit erfundener E-Mail-Adresse kommt keine E-Mail an.";
     }
     keys.forEach(function (key, i) {
       var li = document.createElement("li");

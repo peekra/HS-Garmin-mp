@@ -1,7 +1,7 @@
 # Plan: geplante Änderungen am Demo-Shop
 
-Stand 27.11.2026. **Noch nichts davon ist umgesetzt.** Der User gibt die Umsetzung frei.
-Neue Wünsche aus dem Chat kommen in diese Datei.
+Stand 27.11.2026. **A1 bis A4 sind umgesetzt und im Browser geprüft (27.11.2026).** Offen ist nur, was der User
+selbst macht (siehe unten), und der Testkauf. Neue Wünsche aus dem Chat kommen in diese Datei.
 
 ## Ziel
 
