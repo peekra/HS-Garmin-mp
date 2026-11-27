@@ -782,7 +782,8 @@ h1 .x { color: var(--accent-ink); }
   left: 0; top: 50%;
   width: clamp(150px, 34%, 300px);
   transform: translate(-100%, -50%);
-  animation: fly 2s cubic-bezier(0.45, 0.05, 0.4, 1) infinite;
+  /* half the speed of the watch face (User, 27.11.2026): run 1.6 s, a new run every 4 s, both bands */
+  animation: fly 4s cubic-bezier(0.45, 0.05, 0.4, 1) infinite;
 }
 .flyer::before {
   content: "";
@@ -951,10 +952,7 @@ td, thead th:not(:first-child) { width: 4.6rem; text-align: center; }
   box-shadow: 0 14px 28px -18px rgba(0, 0, 0, 0.7);
 }
 .scene-stage .flight { margin: 0 auto; padding: 0; background: none; }
-.scene-stage .flight__lane { height: clamp(64px, 14vw, 96px); }
-/* the picked scene moves half as fast as Santa in the hero band (User, 27.11.2026): run 1.6 s, cycle 4 s */
-.scene-stage .flyer { animation-duration: 4s; }
-.scene-stage__name {
+.scene-stage .flight__lane { height: clamp(64px, 14vw, 96px); }.scene-stage__name {
   margin-top: 2px;
   text-align: center;
   font-family: var(--font-mono);
