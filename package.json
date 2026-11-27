@@ -1,0 +1,8 @@
+{
+  "name": "gasdefizit-xmas-shop",
+  "private": true,
+  "description": "Static demo shop. No dependencies and no build, the script only starts a local web server (needs Python 3).",
+  "scripts": {
+    "dev": "python3 -m http.server 8765 --bind 127.0.0.1"
+  }
+}

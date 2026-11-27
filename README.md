@@ -38,8 +38,11 @@ Uhr (ab Version 1.1.0 der Watch-Face).
 ## Lokal ansehen
 
 ```bash
-python3 -m http.server 8765 --bind 127.0.0.1
+npm run dev
 ```
+
+Das startet nur `python3 -m http.server 8765 --bind 127.0.0.1` (auch direkt ausführbar). `npm install` ist nicht
+nötig, es gibt keine Abhängigkeiten und keinen Build. GitHub Pages nutzt `package.json` nicht.
 
 Dann http://127.0.0.1:8765/demo/ öffnen. Direkt als Datei (`file://`) funktioniert die Seite auch, nur die
 Weiterleitung nach der Zahlung braucht eine `http(s)`-Adresse.
