@@ -59,7 +59,8 @@ Die persönlichen Angaben trägt der User selbst in die Dateien ein, nicht über
 
 Erledigt am 27.11.2026: Alle Platzhalter sind gefüllt. Der User hat die E-Mail-Adresse und die KI-Werkzeuge
 (Claude, Gemini) genannt und den Vorschlägen zugestimmt: Hosting nach Art. 6 Abs. 1 lit. f DSGVO (Speicherdauer
-legt GitHub fest), Löschung der Aktivierung per E-Mail im Dodo-Dashboard, Aufsichtsbehörde BayLDA. Das Impressum
+legt GitHub fest), Löschung der Aktivierung per E-Mail im Dodo-Dashboard. Keine Aufsichtsbehörde genannt (User), das allgemeine
+Beschwerderecht bleibt im Text. Das Impressum
 bleibt kurz: Studienprojekt der THA, ohne Name und Anschrift. Prüfen: Lehrperson.
 
 ## Entscheidungen zum Haken (User, 27.11.2026)
