@@ -25,7 +25,7 @@ Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen au
   Vorherige Fassung „Winternacht“: Tag `design-winternacht`.
 - Auf jeder Seite: **„Testmodus, kein echter Shop“**.
 - `datenschutz.html` mit Entwurfstext, Abschnitt Watch-Face (`#watch-face`) und Impressum (`#impressum`). Anbieter
-  **CodeBear**. Impressum **kurz** als Studienprojekt der THA: Projektname, Hochschule, Kontakt-E-Mail (Platzhalter).
+  **CodeBear**. Impressum **kurz** als Studienprojekt der THA: Projektname, Hochschule, Kontakt-E-Mail (vom User, 27.11.2026). Bilder laut User mit Claude und Gemini erzeugt.
   Kein Name, keine Anschrift (User, 27.11.2026). Ob das reicht, klärt der User mit der Lehrperson.
 - `nutzungsbedingungen.html` (seit Watch-Face 1.1.0): Leistung, 2 Aktivierungen, Erstattung (`#erstattung`, Testmodus),
   Lizenz (`#lizenz`, proprietär, Bilder KI-erzeugt). Im Footer jeder Seite verlinkt. Datenschutz und Nutzungsbedingungen
