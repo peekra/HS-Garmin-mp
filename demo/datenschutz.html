@@ -34,10 +34,11 @@
   <main id="inhalt" class="wrap">
     <article class="prose">
       <h1>Datenschutz</h1>
-      <p class="placeholder">Platzhaltertext für eine Studienarbeit. Er ist keine Rechtsberatung und muss vor einem echten Betrieb durch eine geprüfte Datenschutzerklärung ersetzt werden. Werte in eckigen Klammern sind Platzhalter.</p>
+      <p class="placeholder">Entwurf für eine Studienarbeit. Er ist keine Rechtsberatung und muss vor einem echten Betrieb durch eine geprüfte Datenschutzerklärung ersetzt werden. Werte in eckigen Klammern sind Platzhalter.</p>
+      <p>Diese Erklärung gilt für diese Webseite und für die Watch-Face <strong>GasDefizit XMas</strong> (Garmin Connect IQ), beide von CodeBear.</p>
 
       <h2>1. Verantwortlich</h2>
-      <p>Verantwortlich für diese Webseite ist die im <a href="#impressum">Impressum</a> genannte Person.</p>
+      <p>Verantwortlich ist CodeBear, Kontakt siehe <a href="#impressum">Impressum</a>.</p>
 
       <h2>2. Hosting</h2>
       <p>Die Seite liegt auf GitHub Pages (GitHub, Inc.). Beim Aufruf verarbeitet GitHub technisch nötige Daten wie die IP-Adresse, Datum und Uhrzeit sowie die aufgerufene Datei, um die Seite auszuliefern und vor Missbrauch zu schützen. <span class="ph">[Rechtsgrundlage und Speicherdauer ergänzen]</span></p>
@@ -51,15 +52,25 @@
       <h2>5. Seite nach der Zahlung</h2>
       <p>Nach der Zahlung leitet Dodo Payments auf <a href="erfolg.html">erfolg.html</a> weiter und hängt Zahlungsstatus, Zahlungs-ID, E-Mail-Adresse und Lizenzschlüssel an die Adresse an. Die Seite liest diese Werte nur im Browser. Die E-Mail-Adresse wird sofort aus der Adresszeile entfernt, und an andere Seiten wird keine Herkunftsadresse weitergegeben. Die Webseite speichert nichts davon.</p>
 
-      <h2>6. Watch-Face</h2>
-      <p><span class="ph">[Platzhalter: Beschreibung, welche Daten die Watch-Face bei der Prüfung des Lizenzschlüssels an Dodo Payments sendet. Wird mit Version 1.1.0 der Watch-Face ergänzt.]</span></p>
+      <h2 id="watch-face">6. Watch-Face GasDefizit XMas</h2>
+      <p><strong>Gesundheits- und Aktivitätsdaten</strong> (Puls, Schritte, Kalorien, VO2max, Wochenstrecken und Trainingszeiten) liest die Watch-Face nur, um sie auf der Uhr anzuzeigen. Sie verlassen die Uhr nicht und werden nicht an CodeBear oder Dritte gesendet.</p>
+      <p><strong>Aktivierungscode:</strong> Der feste Aktivierungscode wird nur auf der Uhr geprüft. Dabei wird nichts gesendet.</p>
+      <p><strong>Lizenzschlüssel:</strong> Nur wenn du einen Lizenzschlüssel in die Einstellungen einträgst, sendet die Uhr über die Garmin-Connect-App deines Handys eine Anfrage an Dodo Payments (<code>test.dodopayments.com</code>), um den Schlüssel zu aktivieren. Gesendet werden:</p>
+      <ul>
+        <li>der Lizenzschlüssel,</li>
+        <li>eine Geräte-ID: die Kennung, die Garmin der Watch-Face auf dieser Uhr gibt (für jede App verschieden, keine Seriennummer). Fehlt sie, eine einmal auf der Uhr erzeugte Zufalls-ID.</li>
+      </ul>
+      <p>Wie bei jeder Internetverbindung sieht Dodo Payments dabei die IP-Adresse deines Handys. Dodo Payments legt zum Schlüssel einen Aktivierungseintrag mit dieser Geräte-ID an; dafür gilt die Datenschutzerklärung von Dodo Payments. Die Antwort von Dodo Payments enthält auch Name und E-Mail-Adresse aus dem Kauf. Die Watch-Face wertet davon nur die Produktnummer aus und speichert die Antwort nicht.</p>
+      <p><strong>Auf der Uhr gespeichert</strong> bleiben der eingetragene Schlüssel (in den Einstellungen der Watch-Face, die Garmin zwischen Handy und Uhr abgleicht), der Stand der Prüfung und ob die Uhr freigeschaltet ist. Alles wird gelöscht, wenn du die Watch-Face deinstallierst. Den Aktivierungseintrag bei Dodo Payments löschen wir auf Anfrage <span class="ph">[Ablauf ergänzen]</span>.</p>
+      <p>Rechtsgrundlage für die Prüfung des Schlüssels ist die Erfüllung des Vertrags über die Freischaltung (Art. 6 Abs. 1 lit. b DSGVO). Für die Übertragung zwischen Uhr, Handy und Internet gilt zusätzlich die Datenschutzerklärung von Garmin.</p>
 
       <h2>7. Deine Rechte</h2>
-      <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung, auf Datenübertragbarkeit und auf Widerspruch sowie das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. <span class="ph">[Zuständige Aufsichtsbehörde ergänzen]</span></p>
+      <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung, auf Datenübertragbarkeit und auf Widerspruch sowie das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Schreib uns dazu an die E-Mail-Adresse im Impressum. <span class="ph">[Zuständige Aufsichtsbehörde ergänzen]</span></p>
 
       <h2 id="impressum">Impressum</h2>
-      <p class="placeholder">Platzhalter. Vor einer Veröffentlichung mit echten Angaben füllen.</p>
+      <p class="placeholder">Platzhalter. Vor einer Veröffentlichung mit echten Angaben füllen. Ein Künstlername allein reicht für ein Impressum in der Regel nicht.</p>
       <address>
+        CodeBear<br>
         <span class="ph">[Vorname Nachname]</span><br>
         <span class="ph">[Straße Hausnummer]</span><br>
         <span class="ph">[PLZ Ort]</span><br>
@@ -78,6 +89,7 @@
       <p><strong>Testmodus, kein echter Shop.</strong> Studienprojekt an der Technischen Hochschule Augsburg, Kurs „Design und Implementierung e-Shop“.</p>
       <nav aria-label="Rechtliches">
         <a href="index.html">Startseite</a>
+        <a href="nutzungsbedingungen.html">Nutzungsbedingungen und Lizenz</a>
         <a href="datenschutz.html">Datenschutz</a>
         <a href="datenschutz.html#impressum">Impressum</a>
       </nav>

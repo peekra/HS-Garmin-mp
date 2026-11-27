@@ -24,9 +24,13 @@ Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen au
   **Hauptfarbe ist das Logo-Orange `#ff4d0a`** (User, 27.11.2026), nicht das Grün `#c8f53c` des Dashboards.
   Vorherige Fassung „Winternacht“: Tag `design-winternacht`.
 - Auf jeder Seite: **„Testmodus, kein echter Shop“**.
-- `datenschutz.html` mit Platzhaltertext und Impressum (Abschnitt `#impressum`, Platzhalter).
-- Preis: **2,49 € (Demo)** (User, 27.11.2026, ersetzt 2,49 USD). Schlüssel gilt für **2 Geräte** (Activations Limit im
-  Dodo-Dashboard).
+- `datenschutz.html` mit Entwurfstext, Abschnitt Watch-Face (`#watch-face`) und Impressum (`#impressum`). Anbieter
+  **CodeBear**, Name/Anschrift/E-Mail bleiben Platzhalter (User, 27.11.2026).
+- `nutzungsbedingungen.html` (seit Watch-Face 1.1.0): Leistung, 2 Aktivierungen, Erstattung (`#erstattung`, Testmodus),
+  Lizenz (`#lizenz`, proprietär, Bilder KI-erzeugt). Im Footer jeder Seite verlinkt. Datenschutz und Nutzungsbedingungen
+  sind der Link für den Connect-IQ-Store-Eintrag.
+- Preis: **2,49 € (Demo)** (User, 27.11.2026, ersetzt 2,49 USD). Schlüssel gilt für **2 Aktivierungen** (Activations Limit im
+  Dodo-Dashboard); auch Neuinstallation und Beta verbrauchen je eine.
 - `erfolg.html` zeigt **nur den Dodo-Schlüssel**. Der feste Code der Watch-Face steht **nirgends** auf der Webseite.
 - Schriften und Bären-Logo selbst gehostet (`demo/assets/fonts/`, OFL; `demo/assets/img/brand/`), keine Anfragen an fremde Server außer dem Dodo-Checkout.
 
@@ -42,13 +46,14 @@ Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen au
 ## Grenzen (dem User gesagt)
 
 - `erfolg.html` ist kein Kaufnachweis, die Adresse ist fälschbar. Geprüft wird später auf der Uhr.
-- Bis die Watch-Face v1.1.0 den Dodo-Schlüssel online prüft (Teil B), schaltet der Schlüssel auf der Uhr nichts frei.
+- Die Watch-Face ab 1.1.0 prüft den Schlüssel online (`POST https://test.dodopayments.com/licenses/activate`), sendet
+  Schlüssel und Geräte-ID, prüft die Produkt-ID. Die Prüfung kann bis zu 5 Minuten dauern.
 - Freischalten geht nur bei Installation aus dem Store oder der Beta (Handy-Einstellungen).
 
 ## Dateien
 
 ```
-demo/index.html, erfolg.html, datenschutz.html
+demo/index.html, erfolg.html, datenschutz.html, nutzungsbedingungen.html
 demo/config.js      PAYMENT_LINK (+ STORE_URL), sonst nichts
 demo/app.js         Buy-Link (ergänzt redirect_url), Zählwerk-Uhr, Santa-Flug
 demo/erfolg.js      Parameter lesen, anzeigen, kopieren
