@@ -25,7 +25,8 @@ Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen au
   Vorherige Fassung „Winternacht“: Tag `design-winternacht`.
 - Auf jeder Seite: **„Testmodus, kein echter Shop“**.
 - `datenschutz.html` mit Entwurfstext, Abschnitt Watch-Face (`#watch-face`) und Impressum (`#impressum`). Anbieter
-  **CodeBear**, Name/Anschrift/E-Mail bleiben Platzhalter (User, 27.11.2026).
+  **CodeBear**. Impressum **kurz** als Studienprojekt der THA: Projektname, Hochschule, Kontakt-E-Mail (Platzhalter).
+  Kein Name, keine Anschrift (User, 27.11.2026). Ob das reicht, klärt der User mit der Lehrperson.
 - `nutzungsbedingungen.html` (seit Watch-Face 1.1.0): Leistung, 2 Aktivierungen, Erstattung (`#erstattung`, Testmodus),
   Lizenz (`#lizenz`, proprietär, Bilder KI-erzeugt). Im Footer jeder Seite verlinkt. Datenschutz und Nutzungsbedingungen
   sind der Link für den Connect-IQ-Store-Eintrag.

@@ -57,8 +57,9 @@ Neuer Eintrag direkt nach „Ist das ein echter Shop?“:
 
 Die persönlichen Angaben trägt der User selbst in die Dateien ein, nicht über den Chat (User, 27.11.2026).
 
-- `datenschutz.html`: Impressum (Name, Anschrift, E-Mail), Rechtsgrundlage und Speicherdauer beim Hosting, Ablauf
-  der Löschung, Aufsichtsbehörde.
+- `datenschutz.html`: Kontakt-E-Mail im Impressum, Rechtsgrundlage und Speicherdauer beim Hosting, Ablauf der
+  Löschung, Aufsichtsbehörde. Das Impressum bleibt kurz: Studienprojekt der THA, ohne Name und Anschrift
+  (User, 27.11.2026).
 - `nutzungsbedingungen.html`: KI-Werkzeug und E-Mail-Adresse.
 
 ## Entscheidungen zum Haken (User, 27.11.2026)
