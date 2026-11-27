@@ -57,10 +57,10 @@ Neuer Eintrag direkt nach „Ist das ein echter Shop?“:
 
 Die persönlichen Angaben trägt der User selbst in die Dateien ein, nicht über den Chat (User, 27.11.2026).
 
-- `datenschutz.html`: Kontakt-E-Mail im Impressum, Rechtsgrundlage und Speicherdauer beim Hosting, Ablauf der
-  Löschung, Aufsichtsbehörde. Das Impressum bleibt kurz: Studienprojekt der THA, ohne Name und Anschrift
-  (User, 27.11.2026).
-- `nutzungsbedingungen.html`: KI-Werkzeug und E-Mail-Adresse.
+Erledigt am 27.11.2026: Alle Platzhalter sind gefüllt. Der User hat die E-Mail-Adresse und die KI-Werkzeuge
+(Claude, Gemini) genannt und den Vorschlägen zugestimmt: Hosting nach Art. 6 Abs. 1 lit. f DSGVO (Speicherdauer
+legt GitHub fest), Löschung der Aktivierung per E-Mail im Dodo-Dashboard, Aufsichtsbehörde BayLDA. Das Impressum
+bleibt kurz: Studienprojekt der THA, ohne Name und Anschrift. Prüfen: Lehrperson.
 
 ## Entscheidungen zum Haken (User, 27.11.2026)
 
