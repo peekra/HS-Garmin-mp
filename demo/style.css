@@ -952,6 +952,8 @@ td, thead th:not(:first-child) { width: 4.6rem; text-align: center; }
 }
 .scene-stage .flight { margin: 0 auto; padding: 0; background: none; }
 .scene-stage .flight__lane { height: clamp(64px, 14vw, 96px); }
+/* the picked scene moves half as fast as Santa in the hero band (User, 27.11.2026): run 1.6 s, cycle 4 s */
+.scene-stage .flyer { animation-duration: 4s; }
 .scene-stage__name {
   margin-top: 2px;
   text-align: center;
