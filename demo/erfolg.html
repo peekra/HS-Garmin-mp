@@ -5,29 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta name="robots" content="noindex">
-  <title>Dein Lizenzschlüssel – GasDefizit XMas · CodeBear Demo-Shop</title>
+  <title data-i18n="ok.title">Dein Lizenzschlüssel – GasDefizit XMas · CodeBear Demo-Shop</title>
+  <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0e0f11">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="stylesheet" href="style.css">
-  <script>document.documentElement.classList.add("js");</script>
+  <script src="prefs.js"></script>
 </head>
 <body>
-  <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+  <div class="sky" aria-hidden="true"></div>
+  <a class="skip" href="#inhalt" data-i18n="skip">Zum Inhalt springen</a>
 
   <div class="testmode" role="note">
     <div class="wrap testmode__inner">
-      <strong>Testmodus, kein echter Shop</strong>
-      <span>Studienprojekt. Bezahlt wird mit Testkarten, es fließt kein echtes Geld.</span>
+      <strong data-i18n="tm.title">Testmodus, kein echter Shop</strong>
+      <span data-i18n="tm.text">Studienprojekt. Bezahlt wird mit Testkarten, es fließt kein echtes Geld.</span>
     </div>
   </div>
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html" aria-label="CodeBear, zur Startseite des Shops">
-        <span class="brand__mark" aria-hidden="true"><img class="bear" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""></span>
+      <a class="brand" href="index.html" aria-label="CodeBear, zur Startseite des Shops" data-i18n-attr="aria-label:brand.home">
+        <span class="brand__mark" aria-hidden="true"><img class="bear bear--light" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""><img class="bear bear--dark" src="assets/img/brand/bear-dark.png" width="17" height="40" alt=""></span>
         <span class="brand__name"><span class="brand__code">Code</span><span class="brand__bear">Bear</span></span>
       </a>
       <span class="brand__product">GasDefizit XMas</span>
+      <div class="prefs">
+        <button type="button" class="iconbtn" data-lang-toggle aria-label="Switch to English" lang="en">EN</button>
+        <button type="button" class="iconbtn" data-theme-toggle aria-label="Zum hellen Modus wechseln">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -35,8 +44,8 @@
     <!-- Exactly one state is shown by erfolg.js. Without JavaScript only the noscript text appears. -->
     <section class="result state rise rise--1" data-state="success" hidden aria-labelledby="t-success">
       <span class="status-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg></span>
-      <p class="eyebrow">Danke für deinen Kauf</p>
-      <h1 id="t-success">Zahlung erfolgreich</h1>
+      <p class="eyebrow" data-i18n="ok.thanks">Danke für deinen Kauf</p>
+      <h1 id="t-success" data-i18n="ok.paid">Zahlung erfolgreich</h1>
       <p class="lead" data-key-intro>Dein Lizenzschlüssel für GasDefizit XMas. Er gilt für 2 Aktivierungen. Kopiere ihn jetzt: Mit erfundener E-Mail-Adresse kommt keine E-Mail an.</p>
       <ul class="keys" data-keys></ul>
       <p class="meta" data-payment hidden></p>
@@ -44,42 +53,43 @@
 
     <section class="result state rise rise--1" data-state="paid-nokey" hidden aria-labelledby="t-paid">
       <span class="status-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg></span>
-      <p class="eyebrow">Danke für deinen Kauf</p>
-      <h1 id="t-paid">Zahlung erfolgreich</h1>
-      <p class="lead">Die Adresse enthält keinen Lizenzschlüssel. Im Testmodus kaufst du einfach noch einmal mit der Testkarte. Das kostet nichts.</p>
+      <p class="eyebrow" data-i18n="ok.thanks">Danke für deinen Kauf</p>
+      <h1 id="t-paid" data-i18n="ok.paid">Zahlung erfolgreich</h1>
+      <p class="lead" data-i18n="ok.nokey">Die Adresse enthält keinen Lizenzschlüssel. Im Testmodus kaufst du einfach noch einmal mit der Testkarte. Das kostet nichts.</p>
     </section>
 
     <section class="result state rise rise--1" data-state="pending" hidden aria-labelledby="t-pending">
       <span class="status-icon status-icon--wait" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4.5l3 2"/></svg></span>
-      <p class="eyebrow">Einen Moment</p>
-      <h1 id="t-pending">Zahlung wird noch bearbeitet</h1>
-      <p class="lead">Dodo Payments hat die Zahlung noch nicht abgeschlossen. Warte kurz und lade die Seite neu. Kommt kein Schlüssel, kaufe im Testmodus noch einmal mit der Testkarte.</p>
+      <p class="eyebrow" data-i18n="ok.wait">Einen Moment</p>
+      <h1 id="t-pending" data-i18n="ok.pendingTitle">Zahlung wird noch bearbeitet</h1>
+      <p class="lead" data-i18n="ok.pendingText">Dodo Payments hat die Zahlung noch nicht abgeschlossen. Warte kurz und lade die Seite neu. Kommt kein Schlüssel, kaufe im Testmodus noch einmal mit der Testkarte.</p>
     </section>
 
     <section class="result state rise rise--1" data-state="failed" hidden aria-labelledby="t-failed">
       <span class="status-icon status-icon--warn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7 7 17"/></svg></span>
-      <p class="eyebrow">Kein Kauf</p>
-      <h1 id="t-failed">Zahlung nicht abgeschlossen</h1>
-      <p class="lead">Die Zahlung ist fehlgeschlagen oder abgelaufen. Es wurde nichts berechnet. Versuche es auf der Startseite noch einmal mit der Testkarte <code>4242 4242 4242 4242</code>, <code>06/32</code>, CVC <code>123</code>.</p>
+      <p class="eyebrow" data-i18n="ok.noBuy">Kein Kauf</p>
+      <h1 id="t-failed" data-i18n="ok.failedTitle">Zahlung nicht abgeschlossen</h1>
+      <p class="lead" data-i18n="ok.failedText">Die Zahlung ist fehlgeschlagen oder abgelaufen. Es wurde nichts berechnet. Versuche es auf der Startseite noch einmal mit der Testkarte <code>4242 4242 4242 4242</code>, <code>06/32</code>, CVC <code>123</code>.</p>
     </section>
 
     <section class="result state rise rise--1" data-state="none" hidden aria-labelledby="t-none">
       <span class="status-icon status-icon--wait" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></span>
-      <p class="eyebrow">Lizenzschlüssel</p>
-      <h1 id="t-none">Kein Schlüssel in der Adresse</h1>
-      <p class="lead">Diese Seite zeigt den Schlüssel nur direkt nach der Zahlung. Im Testmodus kaufst du einfach noch einmal mit der Testkarte.</p>
+      <p class="eyebrow" data-i18n="ok.keyLabel">Lizenzschlüssel</p>
+      <h1 id="t-none" data-i18n="ok.noneTitle">Kein Schlüssel in der Adresse</h1>
+      <p class="lead" data-i18n="ok.noneText">Diese Seite zeigt den Schlüssel nur direkt nach der Zahlung. Im Testmodus kaufst du einfach noch einmal mit der Testkarte.</p>
     </section>
 
     <noscript>
       <section class="result">
         <h1>Lizenzschlüssel</h1>
         <p class="lead">Diese Seite braucht JavaScript, um den Schlüssel aus der Adresse zu lesen. Schalte JavaScript ein und lade die Seite neu.</p>
+        <p class="lead" lang="en">This page needs JavaScript to read the key from the address. Turn on JavaScript and reload the page.</p>
       </section>
     </noscript>
 
     <section class="next rise rise--3" data-next hidden aria-labelledby="t-next">
-      <h2 id="t-next">Nächste Schritte</h2>
-      <ol class="steps">
+      <h2 id="t-next" data-i18n="ok.nextTitle">Nächste Schritte</h2>
+      <ol class="steps" data-i18n="ok.steps">
         <li class="step"><h3>Watch-Face installieren</h3><p>GasDefizit XMas aus dem Connect IQ Store auf die Uhr laden, falls noch nicht geschehen.</p></li>
         <li class="step"><h3>Schlüssel eintragen</h3><p><span class="path">Connect-IQ-App › Meine Watch Faces › GasDefizit XMas › Einstellungen › Aktivierungscode</span></p></li>
         <li class="step"><h3>Speichern und synchronisieren</h3><p>Handy online und mit der Uhr verbunden lassen, bis die Uhr den Schlüssel geprüft hat. Das kann bis zu 5 Minuten dauern. Danach bleibt sie frei, auch offline.</p></li>
@@ -88,26 +98,49 @@
     </section>
 
     <div class="actions">
-      <a class="btn btn--ghost" href="index.html">Zurück zur Startseite</a>
-      <a class="btn" data-retry href="index.html#kaufen" hidden>Noch einmal versuchen</a>
+      <a class="btn btn--ghost" href="index.html" data-i18n="ok.home">Zurück zur Startseite</a>
+      <a class="btn" data-retry href="index.html#kaufen" hidden data-i18n="ok.retry">Noch einmal versuchen</a>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
-      <a class="brand" href="index.html" aria-label="CodeBear, zur Startseite des Shops">
-        <span class="brand__mark" aria-hidden="true"><img class="bear" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""></span>
+      <!-- Board: CodeBear watch faces in the Connect IQ store (as at the bottom of the CodeBear Garmin dashboard) -->
+      <aside class="wfad" aria-labelledby="wfad-h">
+        <div class="wfad__text">
+          <p class="wfad__tag" data-i18n="board.tag">Werbung</p>
+          <div class="wfad__brand">
+            <span class="brand">
+              <span class="brand__mark" aria-hidden="true"><img class="bear bear--light" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""><img class="bear bear--dark" src="assets/img/brand/bear-dark.png" width="17" height="40" alt=""></span>
+              <span class="brand__name"><span class="brand__code">Code</span><span class="brand__bear">Bear</span></span>
+            </span>
+          </div>
+          <h2 id="wfad-h" class="wfad__title" data-i18n="board.title">Watch Faces im Garmin Connect IQ Store</h2>
+          <p class="wfad__intro" data-i18n="board.intro">Gestaltet von CodeBear. Schau dir unsere Watch Faces für deine Garmin-Uhr an.</p>
+        </div>
+        <ul class="wfad__list">
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/88c07f1d-4e6c-4d9b-85cf-b0678328d7af" target="_blank" rel="noopener noreferrer" aria-label="GasDefizit im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="GasDefizit"><img class="wfad__img" src="assets/img/faces/gasdefizit.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">GasDefizit</span></a></li>
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/804b047e-5084-45c7-acfe-28d45326b870" target="_blank" rel="noopener noreferrer" aria-label="NeonFlow im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="NeonFlow"><img class="wfad__img" src="assets/img/faces/neonflow.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">NeonFlow</span></a></li>
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/83641038-9e69-4d64-aabd-38426fa6fb5d" target="_blank" rel="noopener noreferrer" aria-label="Cyber Future im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="Cyber Future"><img class="wfad__img" src="assets/img/faces/cyberfuture.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">Cyber Future</span></a></li>
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/a1bdb5ef-a4bf-4a43-ad7c-d0df45ee26b5" target="_blank" rel="noopener noreferrer" aria-label="Neon Cyborg im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="Neon Cyborg"><img class="wfad__img" src="assets/img/faces/neoncyborg.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">Neon Cyborg</span></a></li>
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/c3f1d717-676f-451a-ad0b-84d52e72ad90" target="_blank" rel="noopener noreferrer" aria-label="Neon Frosh im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="Neon Frosh"><img class="wfad__img" src="assets/img/faces/neonfrosh.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">Neon Frosh</span></a></li>
+        </ul>
+      </aside>
+
+      <a class="brand" href="index.html" aria-label="CodeBear, zur Startseite des Shops" data-i18n-attr="aria-label:brand.home">
+        <span class="brand__mark" aria-hidden="true"><img class="bear bear--light" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""><img class="bear bear--dark" src="assets/img/brand/bear-dark.png" width="17" height="40" alt=""></span>
         <span class="brand__name"><span class="brand__code">Code</span><span class="brand__bear">Bear</span></span>
       </a>
-      <p><strong>Testmodus, kein echter Shop.</strong> Studienprojekt an der Technischen Hochschule Augsburg, Kurs „Design und Implementierung e-Shop“.</p>
-      <nav aria-label="Rechtliches">
-        <a href="nutzungsbedingungen.html">Nutzungsbedingungen und Lizenz</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="datenschutz.html#impressum">Impressum</a>
+      <p data-i18n="foot.study"><strong>Testmodus, kein echter Shop.</strong> Studienprojekt an der Technischen Hochschule Augsburg, Kurs „Design und Implementierung e-Shop“.</p>
+      <nav aria-label="Rechtliches" data-i18n-attr="aria-label:foot.legalLabel">
+        <a href="nutzungsbedingungen.html" data-i18n="foot.terms">Nutzungsbedingungen und Lizenz</a>
+        <a href="datenschutz.html" data-i18n="foot.privacy">Datenschutz</a>
+        <a href="datenschutz.html#impressum" data-i18n="foot.imprint">Impressum</a>
       </nav>
     </div>
   </footer>
 
+  <script src="i18n.js"></script>
   <script src="erfolg.js"></script>
 </body>
 </html>

@@ -3,36 +3,56 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Datenschutz und Impressum – GasDefizit XMas · CodeBear Demo-Shop</title>
+  <title data-i18n="privacy.title">Datenschutz und Impressum – GasDefizit XMas · CodeBear Demo-Shop</title>
+  <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0e0f11">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CodeBear Demo-Shop">
+  <meta property="og:url" content="https://peekra.github.io/HS-Garmin-mp/demo/datenschutz.html">
+  <meta property="og:title" content="Datenschutz und Impressum – GasDefizit XMas">
+  <meta property="og:description" content="Datenschutz der Webseite und der Watch-Face GasDefizit XMas. Demo-Shop einer Studienarbeit, Testmodus.">
+  <meta property="og:image" content="https://peekra.github.io/HS-Garmin-mp/demo/assets/img/og_codebear_1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CodeBear Demo-Shop: GasDefizit XMas auf einer runden Uhr, Zählwerk 10:08 mit roten Sekunden.">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="stylesheet" href="style.css">
+  <script src="prefs.js"></script>
 </head>
 <body>
-  <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+  <div class="sky" aria-hidden="true"></div>
+  <a class="skip" href="#inhalt" data-i18n="skip">Zum Inhalt springen</a>
 
   <div class="testmode" role="note">
     <div class="wrap testmode__inner">
-      <strong>Testmodus, kein echter Shop</strong>
-      <span>Studienprojekt. Bezahlt wird mit Testkarten, es fließt kein echtes Geld.</span>
+      <strong data-i18n="tm.title">Testmodus, kein echter Shop</strong>
+      <span data-i18n="tm.text">Studienprojekt. Bezahlt wird mit Testkarten, es fließt kein echtes Geld.</span>
     </div>
   </div>
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html" aria-label="CodeBear, zur Startseite des Shops">
-        <span class="brand__mark" aria-hidden="true"><img class="bear" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""></span>
+      <a class="brand" href="index.html" aria-label="CodeBear, zur Startseite des Shops" data-i18n-attr="aria-label:brand.home">
+        <span class="brand__mark" aria-hidden="true"><img class="bear bear--light" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""><img class="bear bear--dark" src="assets/img/brand/bear-dark.png" width="17" height="40" alt=""></span>
         <span class="brand__name"><span class="brand__code">Code</span><span class="brand__bear">Bear</span></span>
       </a>
       <span class="brand__product">GasDefizit XMas</span>
-      <nav class="nav" aria-label="Seiten">
-        <a class="btn btn--small btn--ghost" href="index.html">Zur Startseite</a>
+      <nav class="nav" aria-label="Seiten" data-i18n-attr="aria-label:nav.pages">
+        <a class="btn btn--small btn--ghost" href="index.html" data-i18n="nav.home">Zur Startseite</a>
       </nav>
+      <div class="prefs">
+        <button type="button" class="iconbtn" data-lang-toggle aria-label="Switch to English" lang="en">EN</button>
+        <button type="button" class="iconbtn" data-theme-toggle aria-label="Zum hellen Modus wechseln">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="inhalt" class="wrap">
-    <article class="prose">
+    <article class="prose" data-i18n="privacy.article">
       <h1>Datenschutz</h1>
       <p class="placeholder">Entwurf für eine Studienarbeit. Er ist keine Rechtsberatung und muss vor einem echten Betrieb durch eine geprüfte Datenschutzerklärung ersetzt werden.</p>
       <p>Diese Erklärung gilt für diese Webseite und für die Watch-Face <strong>GasDefizit XMas</strong> (Garmin Connect IQ), beide von CodeBear.</p>
@@ -45,6 +65,8 @@
 
       <h2>3. Keine Cookies, kein Tracking</h2>
       <p>Die Seite setzt keine Cookies und nutzt keine Analyse- oder Werbedienste. Schriften und Bilder liegen auf demselben Server, es werden keine Inhalte von fremden Servern nachgeladen.</p>
+      <p><strong>Farbmodus und Sprache:</strong> Schaltest du zwischen hell und dunkel oder zwischen Deutsch und Englisch um, speichert die Seite diese Wahl im Speicher deines Browsers (localStorage, Einträge „cb-theme“ und „cb-lang“), damit sie auf allen Seiten des Shops gilt. Ohne Klick auf einen der Schalter wird nichts gespeichert. Die Wahl wird nicht gesendet. Du löschst sie, indem du die Website-Daten dieser Seite in deinem Browser löschst.</p>
+      <p><strong>Links zum Connect IQ Store:</strong> Die Watch-Face-Karten und das Feld „Werbung“ unten auf jeder Seite verlinken auf Watch Faces von CodeBear im Garmin Connect IQ Store (apps.garmin.com). Beim Laden dieser Seite geht dabei nichts an Garmin. Erst wenn du einen solchen Link anklickst, öffnet dein Browser die Seite von Garmin; dort gilt die Datenschutzerklärung von Garmin.</p>
 
       <h2 id="testmodus">4. Testmodus: keine echten Daten</h2>
       <p>Dieser Shop ist eine Studienarbeit im Testmodus. Es gibt keinen echten Kauf, und es wird kein Geld abgebucht.</p>
@@ -89,18 +111,42 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <a class="brand" href="index.html" aria-label="CodeBear, zur Startseite des Shops">
-        <span class="brand__mark" aria-hidden="true"><img class="bear" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""></span>
+      <!-- Board: CodeBear watch faces in the Connect IQ store (as at the bottom of the CodeBear Garmin dashboard) -->
+      <aside class="wfad" aria-labelledby="wfad-h">
+        <div class="wfad__text">
+          <p class="wfad__tag" data-i18n="board.tag">Werbung</p>
+          <div class="wfad__brand">
+            <span class="brand">
+              <span class="brand__mark" aria-hidden="true"><img class="bear bear--light" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""><img class="bear bear--dark" src="assets/img/brand/bear-dark.png" width="17" height="40" alt=""></span>
+              <span class="brand__name"><span class="brand__code">Code</span><span class="brand__bear">Bear</span></span>
+            </span>
+          </div>
+          <h2 id="wfad-h" class="wfad__title" data-i18n="board.title">Watch Faces im Garmin Connect IQ Store</h2>
+          <p class="wfad__intro" data-i18n="board.intro">Gestaltet von CodeBear. Schau dir unsere Watch Faces für deine Garmin-Uhr an.</p>
+        </div>
+        <ul class="wfad__list">
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/88c07f1d-4e6c-4d9b-85cf-b0678328d7af" target="_blank" rel="noopener noreferrer" aria-label="GasDefizit im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="GasDefizit"><img class="wfad__img" src="assets/img/faces/gasdefizit.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">GasDefizit</span></a></li>
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/804b047e-5084-45c7-acfe-28d45326b870" target="_blank" rel="noopener noreferrer" aria-label="NeonFlow im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="NeonFlow"><img class="wfad__img" src="assets/img/faces/neonflow.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">NeonFlow</span></a></li>
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/83641038-9e69-4d64-aabd-38426fa6fb5d" target="_blank" rel="noopener noreferrer" aria-label="Cyber Future im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="Cyber Future"><img class="wfad__img" src="assets/img/faces/cyberfuture.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">Cyber Future</span></a></li>
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/a1bdb5ef-a4bf-4a43-ad7c-d0df45ee26b5" target="_blank" rel="noopener noreferrer" aria-label="Neon Cyborg im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="Neon Cyborg"><img class="wfad__img" src="assets/img/faces/neoncyborg.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">Neon Cyborg</span></a></li>
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/c3f1d717-676f-451a-ad0b-84d52e72ad90" target="_blank" rel="noopener noreferrer" aria-label="Neon Frosh im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="Neon Frosh"><img class="wfad__img" src="assets/img/faces/neonfrosh.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">Neon Frosh</span></a></li>
+        </ul>
+      </aside>
+
+      <a class="brand" href="index.html" aria-label="CodeBear, zur Startseite des Shops" data-i18n-attr="aria-label:brand.home">
+        <span class="brand__mark" aria-hidden="true"><img class="bear bear--light" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""><img class="bear bear--dark" src="assets/img/brand/bear-dark.png" width="17" height="40" alt=""></span>
         <span class="brand__name"><span class="brand__code">Code</span><span class="brand__bear">Bear</span></span>
       </a>
-      <p><strong>Testmodus, kein echter Shop.</strong> Studienprojekt an der Technischen Hochschule Augsburg, Kurs „Design und Implementierung e-Shop“.</p>
-      <nav aria-label="Rechtliches">
-        <a href="index.html">Startseite</a>
-        <a href="nutzungsbedingungen.html">Nutzungsbedingungen und Lizenz</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="datenschutz.html#impressum">Impressum</a>
+      <p data-i18n="foot.study"><strong>Testmodus, kein echter Shop.</strong> Studienprojekt an der Technischen Hochschule Augsburg, Kurs „Design und Implementierung e-Shop“.</p>
+      <nav aria-label="Rechtliches" data-i18n-attr="aria-label:foot.legalLabel">
+        <a href="index.html" data-i18n="foot.home">Startseite</a>
+        <a href="nutzungsbedingungen.html" data-i18n="foot.terms">Nutzungsbedingungen und Lizenz</a>
+        <a href="datenschutz.html" data-i18n="foot.privacy">Datenschutz</a>
+        <a href="datenschutz.html#impressum" data-i18n="foot.imprint">Impressum</a>
       </nav>
     </div>
   </footer>
+
+  <script src="i18n.js"></script>
 </body>
 </html>

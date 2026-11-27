@@ -1,6 +1,9 @@
 /* GasDefizit XMas demo shop in the CodeBear style (same tokens as the CodeBear Garmin dashboard):
    graphite surface with fine grain, Big Shoulders Display in capitals, Instrument Sans, JetBrains Mono for
-   small labels, one strong accent. The watch visuals keep their own Christmas colors. Dark only, mobile first. */
+   small labels, one strong accent. The watch visuals keep their own Christmas colors. Mobile first.
+   Dark is the default. Light when the system asks for it or the visitor switches (data-theme on <html>, set by
+   prefs.js). The meter, the scene bands and the scene tiles stay dark in both modes (.dark-zone): the Santa
+   picture is white and would vanish on a light surface. */
 
 @font-face {
   font-family: "Big Shoulders Display Variable";
@@ -48,9 +51,23 @@
   --brand-bear: #ffffff;
   --brand-code: #ff4d0a;
 
-  /* main color of the shop: the logo orange; dark text on it keeps the contrast above 4.5:1 */
-  --accent: var(--brand-code);
+  --bear-dark-show: none;
+  --bear-light-show: block;
+  --sun-show: block;
+  --moon-show: none;
+
+  /* main color of the shop: the logo orange; dark text on it keeps the contrast above 4.5:1.
+     --accent-ink is the accent used as text or thin lines (darker in light mode for contrast). */
+  --accent: #ff4d0a;
+  --accent-ink: #ff4d0a;
   --on-accent: #101113;
+
+  /* falling snow: white on dark, gray on light */
+  --snow: rgba(255, 255, 255, 0.6);
+
+  /* scene band: no panel on the dark page, a dark panel on the light page */
+  --band-panel-bg: transparent;
+  --band-panel-pad: 0px;
 
   /* product colors (meter seconds and marker, as on the watch face) */
   --meter-red: #d8262e;
@@ -60,6 +77,80 @@
   --gutter: clamp(16px, 4vw, 40px);
   --wrap: 1240px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Light tokens of the dashboard, with the logo orange as accent. Same block twice: system preference and switch. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --page: #f2f1ec;
+    --page-glow: rgba(255, 255, 255, 0.7);
+    --surface: #fbfbf9;
+    --surface-2: #f4f3ef;
+    --surface-3: #e9e8e2;
+    --line: rgba(11, 11, 11, 0.08);
+    --line-strong: rgba(11, 11, 11, 0.16);
+    --ink: #0b0b0b;
+    --ink-2: #52514e;
+    --ink-3: #75736c;
+    --shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 18px 40px -26px rgba(30, 28, 20, 0.35);
+    --grain-opacity: 0.035;
+    --warn: #8a5a00;
+    --bad: #bd2f2f;
+    --brand-bear: #242328;
+    --brand-code: #e2470c;
+    --bear-dark-show: block;
+    --bear-light-show: none;
+    --sun-show: none;
+    --moon-show: block;
+    --accent-ink: #b83700;
+    --snow: rgba(84, 86, 94, 0.42);
+    --band-panel-bg: #141518;
+    --band-panel-pad: 10px 14px;
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --page: #f2f1ec;
+  --page-glow: rgba(255, 255, 255, 0.7);
+  --surface: #fbfbf9;
+  --surface-2: #f4f3ef;
+  --surface-3: #e9e8e2;
+  --line: rgba(11, 11, 11, 0.08);
+  --line-strong: rgba(11, 11, 11, 0.16);
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --ink-3: #75736c;
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 18px 40px -26px rgba(30, 28, 20, 0.35);
+  --grain-opacity: 0.035;
+  --warn: #8a5a00;
+  --bad: #bd2f2f;
+  --brand-bear: #242328;
+  --brand-code: #e2470c;
+  --bear-dark-show: block;
+  --bear-light-show: none;
+  --sun-show: none;
+  --moon-show: block;
+  --accent-ink: #b83700;
+  --snow: rgba(84, 86, 94, 0.42);
+  --band-panel-bg: #141518;
+  --band-panel-pad: 10px 14px;
+}
+
+/* Areas that stay dark in both modes (meter, scene bands, scene tiles). */
+.dark-zone {
+  color-scheme: dark;
+  --page: #0e0f11;
+  --surface: #18191c;
+  --surface-2: #1f2024;
+  --surface-3: #292a2f;
+  --line: rgba(255, 255, 255, 0.075);
+  --line-strong: rgba(255, 255, 255, 0.15);
+  --ink: #f0efec;
+  --ink-2: #c3c2b7;
+  --ink-3: #8b8a85;
+  --accent-ink: #ff4d0a;
+  color: var(--ink);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -96,6 +187,43 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 body > * { position: relative; z-index: 1; }
+
+/* Slowly falling snow behind the content, as in the first design ("winter night"): two layers of flakes that
+   move down by exactly one tile, so the loop has no jump. Gray on the light page. */
+body > .sky {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.sky::before,
+.sky::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(2px 2px at 10% 20%, var(--snow), transparent 70%),
+    radial-gradient(1.5px 1.5px at 40% 60%, var(--snow), transparent 70%),
+    radial-gradient(2.5px 2.5px at 70% 35%, var(--snow), transparent 70%),
+    radial-gradient(1.5px 1.5px at 85% 80%, var(--snow), transparent 70%);
+  will-change: transform;
+}
+.sky::before {
+  top: -300px;
+  background-size: 300px 300px;
+  animation: snowfall-near 48s linear infinite;
+}
+.sky::after {
+  top: -520px;
+  background-size: 520px 520px;
+  opacity: 0.7;
+  animation: snowfall-far 80s linear infinite;
+}
+@keyframes snowfall-near { to { transform: translateY(300px); } }
+@keyframes snowfall-far { to { transform: translateY(520px); } }
 
 h1, h2, h3, p, ul, ol, figure { margin: 0; }
 [hidden] { display: none !important; }
@@ -168,7 +296,7 @@ a { color: inherit; text-decoration-color: var(--accent); text-underline-offset:
 }
 .badge--accent {
   border-color: color-mix(in srgb, var(--accent) 55%, transparent);
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .btn {
@@ -283,6 +411,9 @@ a { color: inherit; text-decoration-color: var(--accent); text-underline-offset:
 .brand:focus-visible { outline-color: var(--brand-code); }
 .brand__mark { display: block; height: 40px; flex: none; }
 .bear { height: 100%; width: auto; }
+/* two bear images, the one matching the mode is shown (white bear on the dark page) */
+.bear--light { display: var(--bear-light-show); }
+.bear--dark { display: var(--bear-dark-show); }
 .brand__name {
   font-family: var(--font-display);
   font-weight: 800;
@@ -315,10 +446,44 @@ a { color: inherit; text-decoration-color: var(--accent); text-underline-offset:
   color: var(--ink-2);
   font-size: 14px;
   font-weight: 600;
+  white-space: nowrap;
   text-decoration: none;
   transition: background-color 0.2s var(--ease), color 0.2s;
 }
 .nav a:not(.btn):hover { background: var(--surface-2); color: var(--ink); }
+/* five links, the buy button and two switches: the product chip gives way below 1240 px */
+@media (min-width: 1000px) and (max-width: 1239px) {
+  .site-header .nav ~ .prefs, .site-header .nav { gap: 0; }
+  .nav a:not(.btn) { padding: 0 9px; }
+  .site-header .brand__product:has(~ .nav a:nth-child(3)) { display: none; }
+}
+
+/* Theme and language switches, round icon buttons as in the dashboard */
+.prefs { display: flex; align-items: center; gap: 2px; flex: none; }
+.brand__product + .prefs, .brand + .prefs { margin-left: auto; }
+.iconbtn {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 999px;
+  border: 0;
+  background: none;
+  color: var(--ink-3);
+  font: 600 12px/1 var(--font-mono);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+.iconbtn:hover { background: var(--surface-3); color: var(--ink); }
+.iconbtn svg { width: 18px; height: 18px; }
+.icon-sun { display: var(--sun-show); }
+.icon-moon { display: var(--moon-show); }
+@media (max-width: 380px) {
+  .site-header .wrap { gap: 8px; }
+  .iconbtn { width: 36px; }
+}
 
 /* ---------- Hero ---------- */
 
@@ -344,7 +509,7 @@ h1 {
   line-height: 0.84;
   letter-spacing: -0.01em;
 }
-h1 .x { color: var(--accent); }
+h1 .x { color: var(--accent-ink); }
 .tagline {
   margin-top: 18px;
   font-family: var(--font-display);
@@ -532,6 +697,8 @@ h1 .x { color: var(--accent); }
   background: var(--ink-3);
 }
 .price-card .btn { justify-self: start; }
+/* "Buy now" and, once STORE_URL is set, the Connect IQ store button next to it */
+.buy-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .fineprint { font-size: 13px; line-height: 1.5; color: var(--ink-3); }
 .buy-note {
   padding: 10px 14px;
@@ -586,8 +753,11 @@ h1 .x { color: var(--accent); }
   width: 100%;
   max-width: 980px;
   margin: clamp(24px, 4vw, 40px) auto 0;
+  padding: var(--band-panel-pad);
+  border-radius: var(--radius);
+  background: var(--band-panel-bg);
 }
-.flight__arrow { flex: none; width: clamp(28px, 6vw, 46px); color: var(--ink-3); }
+.flight__arrow { flex: none; width: clamp(28px, 6vw, 46px); color: #8b8a85; }
 .flight__lane {
   position: relative;
   flex: 1;
@@ -604,7 +774,7 @@ h1 .x { color: var(--accent); }
   border-radius: 6px;
   background:
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 6px, transparent 6px 12px),
-    linear-gradient(90deg, var(--page), var(--surface-3) 20%, var(--surface-3) 80%, var(--page));
+    linear-gradient(90deg, transparent, #292a2f 20%, #292a2f 80%, transparent);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .flyer {
@@ -624,6 +794,10 @@ h1 .x { color: var(--accent); }
   border-radius: 3px;
 }
 .flyer img { position: relative; width: 100%; }
+/* square scene icons (1..24) fly at the height of the band, Santa (0) stays wide */
+.flyer--square { width: auto; height: 92%; }
+.flyer--square::before { left: 15%; right: 15%; }
+.flyer--square img { width: auto; height: 100%; }
 @keyframes fly {
   0% { transform: translate(-100%, -50%); opacity: 1; }
   40% { transform: translate(100cqw, -50%); opacity: 1; }
@@ -641,7 +815,7 @@ h2 {
   line-height: 0.88;
   letter-spacing: -0.005em;
 }
-h2 .x { color: var(--accent); }
+h2 .x { color: var(--accent-ink); }
 .section__head p { margin-top: 18px; font-size: 17px; line-height: 1.55; color: var(--ink-2); }
 
 /* compare: locked / unlocked */
@@ -665,7 +839,7 @@ h2 .x { color: var(--accent); }
   letter-spacing: 0.1em;
   color: var(--ink-3);
 }
-.compare .is-gold { color: var(--accent); }
+.compare .is-gold { color: var(--accent-ink); }
 
 .table-wrap { padding: 8px 14px; }
 table { width: 100%; border-collapse: collapse; font-size: 15px; }
@@ -678,15 +852,15 @@ thead th {
   text-transform: uppercase;
   color: var(--ink-3);
 }
-thead th.is-gold { color: var(--accent); }
+thead th.is-gold { color: var(--accent-ink); }
 tbody tr td, tbody tr th { border-top: 1px solid var(--line); }
 tbody th { font-weight: 500; color: var(--ink); }
 td, thead th:not(:first-child) { width: 4.6rem; text-align: center; }
 .yes, .no { display: inline-block; vertical-align: middle; }
 .yes {
   width: 0.8rem; height: 0.45rem;
-  border-left: 2.5px solid var(--accent);
-  border-bottom: 2.5px solid var(--accent);
+  border-left: 2.5px solid var(--accent-ink);
+  border-bottom: 2.5px solid var(--accent-ink);
   transform: rotate(-45deg) translate(1px, -2px);
 }
 .no { width: 0.8rem; height: 1.5px; background: var(--ink-3); }
@@ -737,19 +911,56 @@ td, thead th:not(:first-child) { width: 4.6rem; text-align: center; }
   padding: 0;
   list-style: none;
 }
+.scenes > li { display: grid; }
+.scenes > li.scene--wide { grid-column: span 2; }
+/* every tile is a button: it picks the scene that flies through the band above */
 .scene {
   position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
   padding: 8px 8px 10px;
   border-radius: 14px;
   background: var(--surface);
   border: 1px solid var(--line);
+  color: inherit;
+  font: inherit;
   text-align: center;
-  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease);
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease), background-color 0.2s var(--ease);
 }
 .scene:hover { transform: translateY(-2px); border-color: var(--line-strong); }
+.scene[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
 .scene img { width: 74%; margin: 14px auto 6px; aspect-ratio: 1; object-fit: contain; }
-.scene--wide { grid-column: span 2; border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
-.scene--wide img { width: 92%; aspect-ratio: auto; margin-top: 26px; margin-bottom: 16px; }
+.scene--wide .scene img { width: 92%; aspect-ratio: auto; margin-top: 26px; margin-bottom: 16px; }
+
+/* band above the tiles: shows the picked scene; stays in view while scrolling through the tiles */
+.scene-stage {
+  position: sticky;
+  top: 8px;
+  z-index: 5;
+  margin: 0 0 12px;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  background: #141518;
+  border: 1px solid var(--line);
+  box-shadow: 0 14px 28px -18px rgba(0, 0, 0, 0.7);
+}
+.scene-stage .flight { margin: 0 auto; padding: 0; background: none; }
+.scene-stage .flight__lane { height: clamp(64px, 14vw, 96px); }
+.scene-stage__name {
+  margin-top: 2px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
 .scene__no {
   position: absolute;
   top: 7px;
@@ -844,8 +1055,139 @@ td, thead th:not(:first-child) { width: 4.6rem; text-align: center; }
 }
 .cta h2 { margin-top: 8px; font-size: clamp(36px, 5vw, 60px); }
 .cta p { margin-top: 12px; font-size: 15px; color: var(--ink-2); }
-.cta__buy .buy-note, .cta__buy [data-store] { margin-top: 0; }
-@media (min-width: 640px) { .cta .price-card__row { justify-content: flex-end; } }
+.cta__buy .buy-note { margin-top: 0; }
+@media (min-width: 640px) {
+  .cta .price-card__row { justify-content: flex-end; }
+  .cta .buy-row { justify-content: flex-end; }
+}
+
+/* ---------- Product cards: the other CodeBear watch faces (like a watch face catalog) ---------- */
+
+.faces { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.face-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.face-card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+.face-card__art { position: relative; }
+.face-card__art img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.face-card__num {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: rgba(14, 15, 17, 0.72);
+  color: #f0efec;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.face-card__body { display: grid; gap: 12px; align-content: start; flex: 1; padding: 16px 20px 22px; }
+.face-card__note { font-size: 12px; color: var(--ink-3); }
+.face-card h3 { font-size: clamp(30px, 4vw, 40px); line-height: 0.95; }
+.face-card__short { font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tags li {
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--surface-3);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+.face-card__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+.face-card__price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 24px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* ---------- Board at the bottom: CodeBear watch faces in the Connect IQ store (as in the dashboard) ---------- */
+
+.wfad {
+  justify-self: stretch;
+  width: 100%;
+  margin: 0 0 24px;
+  padding: clamp(16px, 2.4vw, 24px);
+  display: grid;
+  gap: 20px;
+  align-items: center;
+  text-align: left;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.wfad__text { display: grid; gap: 8px; justify-items: start; min-width: 0; }
+.wfad__tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+}
+.wfad__brand { margin-top: 4px; }
+.site-footer .wfad .brand__name { font-size: 24px; }
+.site-footer .wfad .brand__mark { height: 40px; }
+.wfad__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+}
+.wfad__intro { font-size: 13px; line-height: 1.5; color: var(--ink-2); }
+.wfad__list { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.site-footer .wfad__link {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  padding: 6px;
+  border-radius: 18px;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.wfad__link:hover { background: color-mix(in srgb, var(--ink) 7%, transparent); }
+.wfad__link:focus-visible { outline: 2px solid var(--brand-code); outline-offset: 2px; }
+.wfad__img {
+  width: 80px;
+  height: 80px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  transition: transform 0.2s var(--ease);
+}
+.wfad__link:hover .wfad__img { transform: translateY(-2px); }
+.wfad__name { font-size: 12.5px; }
+@media (min-width: 900px) {
+  .wfad { grid-template-columns: minmax(0, 1fr) auto; gap: 32px; }
+  .wfad__img { width: 88px; height: 88px; }
+}
 .cta__buy { display: grid; gap: 12px; justify-items: start; }
 .cta .price { display: block; }
 
@@ -880,7 +1222,7 @@ td, thead th:not(:first-child) { width: 4.6rem; text-align: center; }
   color: var(--on-accent);
 }
 .status-icon svg { width: 22px; height: 22px; }
-.status-icon--warn { background: var(--bad); color: #101113; }
+.status-icon--warn { background: var(--bad); color: var(--page); }
 .status-icon--wait { background: var(--surface-3); color: var(--ink); }
 .result .eyebrow { margin-top: 14px; }
 
@@ -912,7 +1254,7 @@ td, thead th:not(:first-child) { width: 4.6rem; text-align: center; }
   -webkit-user-select: all;
 }
 .keybox__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 14px; }
-.copy-status { font-size: 14px; font-weight: 600; color: var(--accent); min-height: 1.4em; }
+.copy-status { font-size: 14px; font-weight: 600; color: var(--accent-ink); min-height: 1.4em; }
 .meta { margin-top: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); overflow-wrap: anywhere; }
 
 .next { margin-top: clamp(40px, 6vw, 72px); }
@@ -965,6 +1307,7 @@ td, thead th:not(:first-child) { width: 4.6rem; text-align: center; }
   .brand__product { display: inline-flex; }
   .cta { grid-template-columns: minmax(0, 1fr) auto; gap: 32px; }
   .cta__buy { justify-items: end; text-align: right; }
+  .faces { grid-template-columns: 1fr 1fr; }
 }
 
 @media (min-width: 1000px) {
@@ -975,10 +1318,12 @@ td, thead th:not(:first-child) { width: 4.6rem; text-align: center; }
   .steps { grid-template-columns: repeat(4, 1fr); }
   .compare { max-width: 860px; }
   .table-wrap { max-width: 860px; }
+  .faces { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 520px) {
   .price-card .btn--xl { justify-self: stretch; }
+  .buy-row .btn--xl { flex: 1 1 100%; }
 }
 
 /* ---------- Less motion ---------- */
@@ -995,5 +1340,5 @@ td, thead th:not(:first-child) { width: 4.6rem; text-align: center; }
 }
 
 @media (forced-colors: active) {
-  body::before, body::after { display: none; }
+  body::before, body::after, .sky { display: none; }
 }

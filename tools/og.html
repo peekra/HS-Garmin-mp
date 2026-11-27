@@ -1,0 +1,85 @@
+<!doctype html>
+<!-- Template of the link preview image demo/assets/img/og_codebear_1200x630.jpg (CodeBear style, German, dark).
+     Open over the local server (npm run dev): http://127.0.0.1:8765/tools/og.html, take a 1200 x 630 screenshot
+     of the page and save it as JPEG (see README.md). Not part of the published shop. -->
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>og image</title>
+<style>
+  @font-face { font-family: "BSD"; src: url("../demo/assets/fonts/big-shoulders-display-var.woff2") format("woff2-variations"); font-weight: 100 900; }
+  @font-face { font-family: "IS"; src: url("../demo/assets/fonts/instrument-sans-var.woff2") format("woff2-variations"); font-weight: 400 700; }
+  @font-face { font-family: "JBM"; src: url("../demo/assets/fonts/jetbrains-mono-var.woff2") format("woff2-variations"); font-weight: 100 800; }
+  html, body { margin: 0; }
+  .og {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: radial-gradient(120% 70% at 30% -10%, rgba(255, 255, 255, 0.06), transparent 60%), #0e0f11;
+    color: #f0efec;
+    font-family: "IS", sans-serif;
+  }
+  .og::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .snow {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.6), transparent 70%),
+      radial-gradient(1.5px 1.5px at 40% 60%, rgba(255, 255, 255, 0.5), transparent 70%),
+      radial-gradient(2.5px 2.5px at 70% 35%, rgba(255, 255, 255, 0.55), transparent 70%),
+      radial-gradient(1.5px 1.5px at 85% 80%, rgba(255, 255, 255, 0.45), transparent 70%);
+    background-size: 300px 300px;
+  }
+  .text { position: absolute; left: 72px; top: 70px; width: 640px; z-index: 2; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img { height: 52px; }
+  .brand span { font: 800 34px/1 "BSD", sans-serif; letter-spacing: 0.01em; }
+  .brand b { color: #ff4d0a; font-weight: 800; }
+  .eyebrow { margin-top: 54px; font: 500 15px/1 "JBM", monospace; letter-spacing: 0.16em; text-transform: uppercase; color: #8b8a85; }
+  h1 { margin: 16px 0 0; font: 800 132px/0.84 "BSD", sans-serif; text-transform: uppercase; letter-spacing: -0.01em; }
+  h1 em { display: block; font-style: normal; color: #ff4d0a; }
+  .tag { margin-top: 22px; font: 700 34px/1 "BSD", sans-serif; text-transform: uppercase; color: #c3c2b7; }
+  .chips { display: flex; gap: 10px; margin-top: 34px; }
+  .chips span { padding: 9px 16px; border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 999px; font-size: 18px; font-weight: 600; color: #c3c2b7; }
+  .chips .test { border-color: rgba(245, 180, 42, 0.5); color: #f5b42a; }
+  .watch {
+    position: absolute;
+    right: 40px;
+    top: -60px;
+    width: 470px;
+    z-index: 1;
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.55));
+  }
+  .glow {
+    position: absolute;
+    right: 40px;
+    top: 90px;
+    width: 470px;
+    height: 470px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 77, 10, 0.18), transparent 66%);
+  }
+</style>
+</head>
+<body>
+  <div class="og">
+    <div class="snow"></div>
+    <div class="glow"></div>
+    <img class="watch" src="../demo/assets/img/watch_hero.webp" alt="">
+    <div class="text">
+      <div class="brand"><img src="../demo/assets/img/brand/bear-light.png" alt=""><span><b>Code</b>Bear</span></div>
+      <p class="eyebrow">Garmin Watch Face · Demo-Shop</p>
+      <h1>GasDefizit <em>XMas</em></h1>
+      <p class="tag">Weihnachten auf dem Zählwerk</p>
+      <div class="chips"><span>25 Weihnachtsszenen</span><span>40 runde AMOLED-Uhren</span><span class="test">Testmodus</span></div>
+    </div>
+  </div>
+</body>
+</html>

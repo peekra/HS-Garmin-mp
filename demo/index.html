@@ -3,42 +3,61 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GasDefizit XMas – Freischaltung · CodeBear Demo-Shop</title>
-  <meta name="description" content="Weihnachtliche Garmin-Watch-Face mit Zählwerk-Uhrzeit, VO2max im Adventskranz und 25 fliegenden Szenen. Demo-Shop im Testmodus.">
+  <title data-i18n="index.title">GasDefizit XMas – Freischaltung · CodeBear Demo-Shop</title>
+  <meta name="description" content="Weihnachtliche Garmin-Watch-Face mit Zählwerk-Uhrzeit, VO2max im Adventskranz und 25 fliegenden Szenen. Demo-Shop im Testmodus." data-i18n-attr="content:index.desc">
+  <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0e0f11">
+  <!-- Link preview: absolute addresses, some services ignore relative paths -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CodeBear Demo-Shop">
+  <meta property="og:url" content="https://peekra.github.io/HS-Garmin-mp/demo/">
   <meta property="og:title" content="GasDefizit XMas – Weihnachten auf dem Zählwerk">
   <meta property="og:description" content="Watch-Face für runde AMOLED-Uhren. Demo-Shop einer Studienarbeit, Testmodus.">
-  <meta property="og:image" content="assets/img/og_1200x630.jpg">
+  <meta property="og:image" content="https://peekra.github.io/HS-Garmin-mp/demo/assets/img/og_codebear_1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CodeBear Demo-Shop: GasDefizit XMas auf einer runden Uhr, Zählwerk 10:08 mit roten Sekunden.">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="preload" href="assets/fonts/big-shoulders-display-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
-  <script>document.documentElement.classList.add("js");</script>
+  <script src="prefs.js"></script>
 </head>
 <body>
-  <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+  <div class="sky" aria-hidden="true"></div>
+  <a class="skip" href="#inhalt" data-i18n="skip">Zum Inhalt springen</a>
 
   <div class="testmode" role="note">
     <div class="wrap testmode__inner">
-      <strong>Testmodus, kein echter Shop</strong>
-      <span>Studienprojekt. Bezahlt wird mit Testkarten, es fließt kein echtes Geld.</span>
+      <strong data-i18n="tm.title">Testmodus, kein echter Shop</strong>
+      <span data-i18n="tm.text">Studienprojekt. Bezahlt wird mit Testkarten, es fließt kein echtes Geld.</span>
     </div>
   </div>
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html" aria-label="CodeBear, zur Startseite des Shops">
-        <span class="brand__mark" aria-hidden="true"><img class="bear" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""></span>
+      <a class="brand" href="index.html" aria-label="CodeBear, zur Startseite des Shops" data-i18n-attr="aria-label:brand.home">
+        <span class="brand__mark" aria-hidden="true"><img class="bear bear--light" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""><img class="bear bear--dark" src="assets/img/brand/bear-dark.png" width="17" height="40" alt=""></span>
         <span class="brand__name"><span class="brand__code">Code</span><span class="brand__bear">Bear</span></span>
       </a>
       <span class="brand__product">GasDefizit XMas</span>
-      <nav class="nav" aria-label="Hauptnavigation">
-        <a href="#vergleich">Gesperrt / frei</a>
-        <a href="#funktionen">Funktionen</a>
-        <a href="#szenen">Szenen</a>
-        <a href="#so-gehts">So geht's</a>
-        <a class="btn btn--small" href="#kaufen">Kaufen</a>
+      <nav class="nav" aria-label="Hauptnavigation" data-i18n-attr="aria-label:nav.main">
+        <a href="#vergleich" data-i18n="nav.compare">Gesperrt / frei</a>
+        <a href="#funktionen" data-i18n="nav.features">Funktionen</a>
+        <a href="#szenen" data-i18n="nav.scenes">Szenen</a>
+        <a href="#so-gehts" data-i18n="nav.how">So geht's</a>
+        <a href="#watchfaces">Watch Faces</a>
+        <a class="btn btn--small" href="#kaufen" data-i18n="nav.buy">Kaufen</a>
       </nav>
+      <div class="prefs">
+        <button type="button" class="iconbtn" data-lang-toggle aria-label="Switch to English" lang="en">EN</button>
+        <button type="button" class="iconbtn" data-theme-toggle aria-label="Zum hellen Modus wechseln">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -47,9 +66,9 @@
     <section class="hero" aria-labelledby="titel">
       <div class="wrap">
         <div class="hero__text">
-          <p class="eyebrow rise rise--1">Garmin Watch Face · Freischaltung</p>
+          <p class="eyebrow rise rise--1" data-i18n="hero.eyebrow">Garmin Watch Face · Freischaltung</p>
           <h1 id="titel" class="rise rise--2"><span>GasDefizit</span> <span class="x">XMas</span></h1>
-          <p class="tagline rise rise--2">Weihnachten auf dem Zählwerk.</p>
+          <p class="tagline rise rise--2" data-i18n="hero.tagline">Weihnachten auf dem Zählwerk.</p>
 
           <div class="meter rise rise--3" role="img" aria-label="Zählwerk, das die aktuelle Uhrzeit zeigt" data-meter>
             <div class="meter__case">
@@ -80,41 +99,47 @@
             <span class="meter__unit" aria-hidden="true">kWh</span>
           </div>
 
-          <p class="lead rise rise--4">Die Uhrzeit läuft als Rollenzählwerk mit Schneehaube, die Sekunden stehen in roten Kästchen. Darüber zeigt ein Zeiger im Adventskranz deine VO2max, und jeden Morgen fliegt ein neues Weihnachtsbild über das Zifferblatt.</p>
+          <p class="lead rise rise--4" data-i18n="hero.lead">Die Uhrzeit läuft als Rollenzählwerk mit Schneehaube, die Sekunden stehen in roten Kästchen. Darüber zeigt ein Zeiger im Adventskranz deine VO2max, und jeden Morgen fliegt ein neues Weihnachtsbild über das Zifferblatt.</p>
 
-          <ul class="chips rise rise--4" aria-label="Kurz gesagt">
+          <ul class="chips rise rise--4" aria-label="Kurz gesagt" data-i18n-attr="aria-label:hero.chipsLabel" data-i18n="hero.chips">
             <li>25 Weihnachtsszenen</li>
             <li>5 Datenfelder</li>
             <li>40 runde AMOLED-Uhren</li>
           </ul>
 
-          <div class="price-card ice rise rise--5" id="kaufen">
+          <div class="price-card ice rise rise--5" id="kaufen" data-buy-box>
             <div class="price-card__row">
-              <span class="price">2,49 <small>€</small></span>
+              <span class="price" data-i18n="price.amount">2,49 <small>€</small></span>
               <span class="badge badge--accent">Demo</span>
             </div>
-            <ul>
+            <ul data-i18n="price.list">
               <li>Einmal zahlen, alle Einstellungen frei</li>
               <li>Lizenzschlüssel für 2 Aktivierungen</li>
               <li>Die Watch-Face selbst ist gratis</li>
             </ul>
-            <p class="testdata"><strong>Testmodus:</strong> Gib keinen echten Namen, keine echte Adresse und keine echte Karte ein. Testkarte: <code>4242 4242 4242 4242</code>, <code>06/32</code>, CVC <code>123</code>.</p>
+            <p class="testdata" data-i18n="price.testdata"><strong>Testmodus:</strong> Gib keinen echten Namen, keine echte Adresse und keine echte Karte ein. Testkarte: <code>4242 4242 4242 4242</code>, <code>06/32</code>, CVC <code>123</code>.</p>
             <label class="consent">
               <input type="checkbox" data-consent aria-describedby="consent-note-1">
-              <span>Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen. Ich verwende nur Testdaten.</span>
+              <span data-i18n="consent">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen. Ich verwende nur Testdaten.</span>
             </label>
             <p class="buy-note" id="consent-note-1" data-consent-note aria-live="polite" hidden></p>
-            <a class="btn btn--xl" data-buy href="#kaufen">
-              Buy now
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
+            <div class="buy-row">
+              <a class="btn btn--xl" data-buy href="#kaufen">
+                Buy now
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="btn btn--xl btn--outline" data-store-link href="#" target="_blank" rel="noopener noreferrer" hidden>
+                <span data-i18n="store.cta">Auf Garmin Connect IQ</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
             <p class="buy-note" data-buy-note hidden></p>
-            <p class="fineprint">Die Zahlung läuft über Dodo Payments im Testmodus. Danach zeigt dir die nächste Seite deinen Lizenzschlüssel. Kopiere ihn dort: Mit einer erfundenen E-Mail-Adresse kommt keine E-Mail an. Es gelten die <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a> und der <a href="datenschutz.html">Datenschutz</a>.</p>
+            <p class="fineprint" data-i18n="price.fineprint">Die Zahlung läuft über Dodo Payments im Testmodus. Danach zeigt dir die nächste Seite deinen Lizenzschlüssel. Kopiere ihn dort: Mit einer erfundenen E-Mail-Adresse kommt keine E-Mail an. Es gelten die <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a> und der <a href="datenschutz.html">Datenschutz</a>.</p>
           </div>
         </div>
 
         <div class="hero__watch rise rise--3">
-          <img src="assets/img/watch_hero.webp" width="912" height="1170" alt="Die Watch-Face auf einer runden Uhr mit rotem Armband: Adventskranz mit VO2-Zeiger, Zählwerk 10:08 mit roten Sekunden 36, vier Datenfelder, fliegender Santa, Datum 24-12-2026.">
+          <img src="assets/img/watch_hero.webp" width="900" height="1170" alt="Die Watch-Face auf einer runden Uhr mit schwarzem Armband: Adventskranz mit VO2-Zeiger, Zählwerk 10:08 mit roten Sekunden 36, vier Datenfelder, fliegender Santa, Datum 24-12-2026." data-i18n-attr="alt:hero.watchAlt">
         </div>
       </div>
 
@@ -133,36 +158,36 @@
     <section class="section" id="vergleich" aria-labelledby="vergleich-titel">
       <div class="wrap">
         <div class="section__head reveal">
-          <span class="section__num">01 · Gesperrt oder frei</span>
-          <h2 id="vergleich-titel">Ein Schlüssel, alles frei</h2>
-          <p>Installieren kostet nichts. Ohne Schlüssel bekommst du das volle Weihnachtszifferblatt mit den Standardfeldern. Mit Schlüssel stellst du alles selbst ein.</p>
+          <span class="section__num" data-i18n="cmp.num">01 · Gesperrt oder frei</span>
+          <h2 id="vergleich-titel" data-i18n="cmp.title">Ein Schlüssel, alles frei</h2>
+          <p data-i18n="cmp.lead">Installieren kostet nichts. Ohne Schlüssel bekommst du das volle Weihnachtszifferblatt mit den Standardfeldern. Mit Schlüssel stellst du alles selbst ein.</p>
         </div>
 
         <div class="compare reveal">
           <figure>
-            <img src="assets/img/watch_free.webp" width="578" height="665" loading="lazy" alt="Gesperrt: Lauf-km, Puls, Schritte und Kalorien, Santa mit Rentieren im Band.">
-            <figcaption>Gesperrt <small>gratis</small></figcaption>
+            <img src="assets/img/watch_free.webp" width="570" height="665" loading="lazy" alt="Gesperrt: Lauf-km, Puls, Schritte und Kalorien, Santa mit Rentieren im Band." data-i18n-attr="alt:cmp.freeAlt">
+            <figcaption data-i18n="cmp.freeCap">Gesperrt <small>gratis</small></figcaption>
           </figure>
           <figure>
-            <img src="assets/img/watch_unlocked.webp" width="578" height="665" loading="lazy" alt="Freigeschaltet: andere Felder wie Training, Klettern, Schritte und Puls, im Band der Nerd-Schneemann.">
-            <figcaption class="is-gold">Frei <small>mit Lizenzschlüssel</small></figcaption>
+            <img src="assets/img/watch_unlocked.webp" width="570" height="665" loading="lazy" alt="Freigeschaltet: andere Felder wie Training, Klettern, Schritte und Puls, im Band der Nerd-Schneemann." data-i18n-attr="alt:cmp.unlockedAlt">
+            <figcaption class="is-gold" data-i18n="cmp.unlockedCap">Frei <small>mit Lizenzschlüssel</small></figcaption>
           </figure>
         </div>
 
         <div class="ice table-wrap reveal">
           <table>
-            <caption class="visually-hidden">Was gesperrt und was freigeschaltet geht</caption>
+            <caption class="visually-hidden" data-i18n="cmp.caption">Was gesperrt und was freigeschaltet geht</caption>
             <thead>
-              <tr><th scope="col">Funktion</th><th scope="col">Gesperrt</th><th scope="col" class="is-gold">Frei</th></tr>
+              <tr><th scope="col" data-i18n="cmp.colFeature">Funktion</th><th scope="col" data-i18n="cmp.colLocked">Gesperrt</th><th scope="col" class="is-gold" data-i18n="cmp.colFree">Frei</th></tr>
             </thead>
             <tbody>
-              <tr><th scope="row">Uhrzeit als Zählwerk mit Sekunden</th><td><span class="yes" role="img" aria-label="ja"></span></td><td><span class="yes" role="img" aria-label="ja"></span></td></tr>
-              <tr><th scope="row">VO2max im Adventskranz, Datum, Status-Icons</th><td><span class="yes" role="img" aria-label="ja"></span></td><td><span class="yes" role="img" aria-label="ja"></span></td></tr>
-              <tr><th scope="row">Lauf-km, Puls, Schritte, Kalorien</th><td><span class="yes" role="img" aria-label="ja"></span></td><td><span class="yes" role="img" aria-label="ja"></span></td></tr>
-              <tr><th scope="row">Jeden Tag um 6:00 eine neue Szene</th><td><span class="yes" role="img" aria-label="ja"></span></td><td><span class="yes" role="img" aria-label="ja"></span></td></tr>
-              <tr><th scope="row">5 Felder aus 8 Datenarten wählen</th><td><span class="no" role="img" aria-label="nein"></span></td><td><span class="yes" role="img" aria-label="ja"></span></td></tr>
-              <tr><th scope="row">Szene nach Tageszeit oder stündlich</th><td><span class="no" role="img" aria-label="nein"></span></td><td><span class="yes" role="img" aria-label="ja"></span></td></tr>
-              <tr><th scope="row">Jedes Element ein- oder ausblenden</th><td><span class="no" role="img" aria-label="nein"></span></td><td><span class="yes" role="img" aria-label="ja"></span></td></tr>
+              <tr><th scope="row" data-i18n="cmp.r1">Uhrzeit als Zählwerk mit Sekunden</th><td><span class="yes" role="img" aria-label="ja" data-i18n-attr="aria-label:yes"></span></td><td><span class="yes" role="img" aria-label="ja" data-i18n-attr="aria-label:yes"></span></td></tr>
+              <tr><th scope="row" data-i18n="cmp.r2">VO2max im Adventskranz, Datum, Status-Icons</th><td><span class="yes" role="img" aria-label="ja" data-i18n-attr="aria-label:yes"></span></td><td><span class="yes" role="img" aria-label="ja" data-i18n-attr="aria-label:yes"></span></td></tr>
+              <tr><th scope="row" data-i18n="cmp.r3">Lauf-km, Puls, Schritte, Kalorien</th><td><span class="yes" role="img" aria-label="ja" data-i18n-attr="aria-label:yes"></span></td><td><span class="yes" role="img" aria-label="ja" data-i18n-attr="aria-label:yes"></span></td></tr>
+              <tr><th scope="row" data-i18n="cmp.r4">Jeden Tag um 6:00 eine neue Szene</th><td><span class="yes" role="img" aria-label="ja" data-i18n-attr="aria-label:yes"></span></td><td><span class="yes" role="img" aria-label="ja" data-i18n-attr="aria-label:yes"></span></td></tr>
+              <tr><th scope="row" data-i18n="cmp.r5">5 Felder aus 8 Datenarten wählen</th><td><span class="no" role="img" aria-label="nein" data-i18n-attr="aria-label:no"></span></td><td><span class="yes" role="img" aria-label="ja" data-i18n-attr="aria-label:yes"></span></td></tr>
+              <tr><th scope="row" data-i18n="cmp.r6">Szene nach Tageszeit oder stündlich</th><td><span class="no" role="img" aria-label="nein" data-i18n-attr="aria-label:no"></span></td><td><span class="yes" role="img" aria-label="ja" data-i18n-attr="aria-label:yes"></span></td></tr>
+              <tr><th scope="row" data-i18n="cmp.r7">Jedes Element ein- oder ausblenden</th><td><span class="no" role="img" aria-label="nein" data-i18n-attr="aria-label:no"></span></td><td><span class="yes" role="img" aria-label="ja" data-i18n-attr="aria-label:yes"></span></td></tr>
             </tbody>
           </table>
         </div>
@@ -173,38 +198,48 @@
     <section class="section" id="funktionen" aria-labelledby="funktionen-titel">
       <div class="wrap">
         <div class="section__head reveal">
-          <span class="section__num">02 · Funktionen</span>
-          <h2 id="funktionen-titel">Was drauf ist</h2>
+          <span class="section__num" data-i18n="feat.num">02 · Funktionen</span>
+          <h2 id="funktionen-titel" data-i18n="feat.title">Was drauf ist</h2>
         </div>
         <ul class="features">
-          <li class="feature ice reveal"><h3>Uhrzeit als Zählwerk</h3><p>24 Stunden auf Walzen mit Schneehaube, die Sekunden in Rot.</p></li>
-          <li class="feature ice reveal"><h3>VO2max im Adventskranz</h3><p>Deine Lauf-VO2max als Zeiger mitten im Kranz. Halten öffnet die VO2max-Ansicht der Uhr.</p></li>
-          <li class="feature ice reveal"><h3>25 Weihnachtsszenen</h3><p>Santa, Rentiere und Nerd-Icons fliegen nach dem Heben des Handgelenks durchs Band.</p></li>
-          <li class="feature ice reveal"><h3>Puls mit EKG-Linie</h3><p>Aktueller Puls, daneben tickt jede Sekunde eine kleine EKG-Linie.</p></li>
-          <li class="feature ice is-locked reveal"><h3>Fünf Datenfelder <span class="badge badge--accent">Mit Schlüssel</span></h3><p>Lauf, Rad, Schwimmen, Klettern, Training, Puls, Schritte, Kalorien.</p></li>
-          <li class="feature ice is-locked reveal"><h3>Drei Szenenmodi <span class="badge badge--accent">Mit Schlüssel</span></h3><p>Täglich um 6:00, nach Tageszeit oder jede Stunde.</p></li>
-          <li class="feature ice is-locked reveal"><h3>Zeig, was du brauchst <span class="badge badge--accent">Mit Schlüssel</span></h3><p>VO2, Szene, Datum, Bluetooth oder Wecker ausblenden.</p></li>
-          <li class="feature ice reveal"><h3>Gemacht für AMOLED</h3><p>40 runde AMOLED-Uhren. Mit „Immer an“ zeigt die Uhr nur die Uhrzeit.</p></li>
+          <li class="feature ice reveal" data-i18n="feat.1"><h3>Uhrzeit als Zählwerk</h3><p>24 Stunden auf Walzen mit Schneehaube, die Sekunden in Rot.</p></li>
+          <li class="feature ice reveal" data-i18n="feat.2"><h3>VO2max im Adventskranz</h3><p>Deine Lauf-VO2max als Zeiger mitten im Kranz. Halten öffnet die VO2max-Ansicht der Uhr.</p></li>
+          <li class="feature ice reveal" data-i18n="feat.3"><h3>25 Weihnachtsszenen</h3><p>Santa, Rentiere und Nerd-Icons fliegen nach dem Heben des Handgelenks durchs Band.</p></li>
+          <li class="feature ice reveal" data-i18n="feat.4"><h3>Puls mit EKG-Linie</h3><p>Aktueller Puls, daneben tickt jede Sekunde eine kleine EKG-Linie.</p></li>
+          <li class="feature ice is-locked reveal" data-i18n="feat.5"><h3>Fünf Datenfelder <span class="badge badge--accent">Mit Schlüssel</span></h3><p>Lauf, Rad, Schwimmen, Klettern, Training, Puls, Schritte, Kalorien.</p></li>
+          <li class="feature ice is-locked reveal" data-i18n="feat.6"><h3>Drei Szenenmodi <span class="badge badge--accent">Mit Schlüssel</span></h3><p>Täglich um 6:00, nach Tageszeit oder jede Stunde.</p></li>
+          <li class="feature ice is-locked reveal" data-i18n="feat.7"><h3>Zeig, was du brauchst <span class="badge badge--accent">Mit Schlüssel</span></h3><p>VO2, Szene, Datum, Bluetooth oder Wecker ausblenden.</p></li>
+          <li class="feature ice reveal" data-i18n="feat.8"><h3>Gemacht für AMOLED</h3><p>40 runde AMOLED-Uhren. Mit „Immer an“ zeigt die Uhr nur die Uhrzeit.</p></li>
         </ul>
       </div>
     </section>
 
-    <!-- Scenes -->
+    <!-- Scenes: every tile is a button, the picked scene flies through the band above the tiles -->
     <section class="section" id="szenen" aria-labelledby="szenen-titel">
       <div class="wrap">
         <div class="section__head reveal">
-          <span class="section__num">03 · Szenen</span>
-          <h2 id="szenen-titel">25 Weihnachtsbilder</h2>
-          <p>Um 6:00 Uhr kommt das nächste Bild der Reihe, los geht es mit Santa und seinen Rentieren. Mit Schlüssel wechselt die Szene auch nach Tageszeit oder jede Stunde.</p>
+          <span class="section__num" data-i18n="sc.num">03 · Szenen</span>
+          <h2 id="szenen-titel" data-i18n="sc.title">25 Weihnachtsbilder</h2>
+          <p data-i18n="sc.lead">Um 6:00 Uhr kommt das nächste Bild der Reihe, los geht es mit Santa und seinen Rentieren. Mit Schlüssel wechselt die Szene auch nach Tageszeit oder jede Stunde. Tippe auf ein Bild, dann fliegt es oben durchs Band.</p>
         </div>
-        <ul class="modes reveal" aria-label="Szenenmodi">
+        <ul class="modes reveal" aria-label="Szenenmodi" data-i18n-attr="aria-label:sc.modesLabel" data-i18n="sc.modes">
           <li>Täglich um 6:00</li>
           <li>Tageszeit <span class="badge badge--accent">Mit Schlüssel</span></li>
           <li>Stündlich <span class="badge badge--accent">Mit Schlüssel</span></li>
         </ul>
-        <ul class="scenes reveal" data-scenes>
-          <!-- filled from the list below by app.js; this first tile stays without JS -->
-          <li class="scene scene--wide"><span class="scene__no">0</span><img src="assets/img/scenes/scene00.webp" width="520" height="154" loading="lazy" alt=""><span class="scene__name">Santa mit Rentieren</span></li>
+        <div class="scene-stage dark-zone" data-scene-stage>
+          <div class="flight" aria-hidden="true">
+            <svg class="flight__arrow" viewBox="0 0 48 24"><path fill="currentColor" d="M2 4 L18 12 L2 20 L8 12 Z M10 10 H46 V14 H10 Z"/></svg>
+            <div class="flight__lane">
+              <div class="flyer" data-scene-flyer><img src="assets/img/scenes/scene00.webp" width="520" height="154" alt=""></div>
+            </div>
+            <svg class="flight__arrow" viewBox="0 0 48 24"><path fill="currentColor" d="M2 10 H32 V14 H2 Z M30 3 L46 12 L30 21 Z"/></svg>
+          </div>
+          <p class="scene-stage__name" data-scene-name aria-live="polite">0 · Santa mit Rentieren</p>
+        </div>
+        <ul class="scenes dark-zone reveal" data-scenes aria-label="Szene auswählen" data-i18n-attr="aria-label:sc.pick">
+          <!-- app.js adds the tiles 1..24; this first tile stays without JS -->
+          <li class="scene--wide"><button type="button" class="scene" data-scene="0" aria-pressed="true"><span class="scene__no">0</span><img src="assets/img/scenes/scene00.webp" width="520" height="154" loading="lazy" alt=""><span class="scene__name">Santa mit Rentieren</span></button></li>
         </ul>
         <noscript><p class="fineprint">Die übrigen 24 Bilder zeigt die Seite mit eingeschaltetem JavaScript.</p></noscript>
       </div>
@@ -214,14 +249,14 @@
     <section class="section" id="so-gehts" aria-labelledby="so-gehts-titel">
       <div class="wrap">
         <div class="section__head reveal">
-          <span class="section__num">04 · So funktioniert es</span>
-          <h2 id="so-gehts-titel">In vier Schritten frei</h2>
+          <span class="section__num" data-i18n="how.num">04 · So funktioniert es</span>
+          <h2 id="so-gehts-titel" data-i18n="how.title">In vier Schritten frei</h2>
         </div>
         <ol class="steps">
-          <li class="step reveal"><h3>Kaufen</h3><p>„Buy now“ antippen und im Testmodus mit einer Testkarte bezahlen.</p></li>
-          <li class="step reveal"><h3>Schlüssel kopieren</h3><p>Nach der Zahlung zeigt dir die Seite deinen Lizenzschlüssel. Kopiere ihn sofort, mit erfundener E-Mail-Adresse kommt keine E-Mail an.</p></li>
-          <li class="step reveal"><h3>In Connect IQ eintragen</h3><p><span class="path">Connect-IQ-App › Meine Watch Faces › GasDefizit XMas › Einstellungen › Aktivierungscode</span></p></li>
-          <li class="step reveal"><h3>Speichern und synchronisieren</h3><p>Lass das Handy online und mit der Uhr verbunden, bis die Uhr den Schlüssel geprüft hat. Das kann bis zu 5 Minuten dauern. Danach bleibt sie frei, auch offline.</p></li>
+          <li class="step reveal" data-i18n="how.1"><h3>Kaufen</h3><p>„Buy now“ antippen und im Testmodus mit einer Testkarte bezahlen.</p></li>
+          <li class="step reveal" data-i18n="how.2"><h3>Schlüssel kopieren</h3><p>Nach der Zahlung zeigt dir die Seite deinen Lizenzschlüssel. Kopiere ihn sofort, mit erfundener E-Mail-Adresse kommt keine E-Mail an.</p></li>
+          <li class="step reveal" data-i18n="how.3"><h3>In Connect IQ eintragen</h3><p><span class="path">Connect-IQ-App › Meine Watch Faces › GasDefizit XMas › Einstellungen › Aktivierungscode</span></p></li>
+          <li class="step reveal" data-i18n="how.4"><h3>Speichern und synchronisieren</h3><p>Lass das Handy online und mit der Uhr verbunden, bis die Uhr den Schlüssel geprüft hat. Das kann bis zu 5 Minuten dauern. Danach bleibt sie frei, auch offline.</p></li>
         </ol>
       </div>
     </section>
@@ -230,10 +265,10 @@
     <section class="section" id="fragen" aria-labelledby="fragen-titel">
       <div class="wrap">
         <div class="section__head reveal">
-          <span class="section__num">05 · Gut zu wissen</span>
-          <h2 id="fragen-titel">Fragen</h2>
+          <span class="section__num" data-i18n="faq.num">05 · Gut zu wissen</span>
+          <h2 id="fragen-titel" data-i18n="faq.title">Fragen</h2>
         </div>
-        <div class="faq reveal">
+        <div class="faq reveal" data-i18n="faq.list">
           <details>
             <summary>Ist das ein echter Shop?</summary>
             <p>Nein. Die Seite gehört zu einer Studienarbeit an der Technischen Hochschule Augsburg („Design und Implementierung e-Shop“). Dodo Payments läuft im Testmodus, du bezahlst mit einer Testkarte und es wird nichts abgebucht.</p>
@@ -270,30 +305,128 @@
       </div>
     </section>
 
+    <!-- More watch faces by CodeBear (texts from the store listings of each project) -->
+    <section class="section" id="watchfaces" aria-labelledby="watchfaces-titel">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <span class="section__num" data-i18n="wf.num">06 · Mehr von CodeBear</span>
+          <h2 id="watchfaces-titel" data-i18n="wf.title">Unsere Watch Faces</h2>
+          <p data-i18n="wf.lead">Weitere Watch Faces von CodeBear für runde Garmin-Uhren, kostenlos im Garmin Connect IQ Store.</p>
+        </div>
+        <ul class="faces">
+          <li class="face-card reveal">
+            <div class="face-card__art">
+              <img src="assets/img/faces/gasdefizit.webp" width="400" height="400" loading="lazy" alt="Vorschau von GasDefizit auf einer runden Uhr" data-i18n-attr="alt:wf.alt" data-i18n-name="GasDefizit">
+              <span class="face-card__num">01 / Watch Face</span>
+            </div>
+            <div class="face-card__body">
+              <p class="face-card__note" data-i18n="wf.note">Vorschau mit Beispieldaten.</p>
+              <h3>GasDefizit</h3>
+              <p class="face-card__short" data-i18n="wf.gd.short">Deine Uhr als analoger Stromzähler: Uhrzeit als Rollenzählwerk, VO2max und frei wählbare Felder für Sport und Alltag.</p>
+              <ul class="tags" data-i18n="wf.gd.tags"><li>Rollenzählwerk</li><li>VO2max-Instrument</li><li>Bis zu 5 Datenfelder</li><li>Hell oder dunkel</li></ul>
+              <div class="face-card__foot">
+                <span class="face-card__price" data-i18n="wf.free">Kostenlos</span>
+                <a class="btn" href="https://apps.garmin.com/apps/88c07f1d-4e6c-4d9b-85cf-b0678328d7af" target="_blank" rel="noopener noreferrer" aria-label="GasDefizit auf Garmin Connect IQ öffnen (neuer Tab)" data-i18n-attr="aria-label:wf.open" data-i18n-name="GasDefizit"><span data-i18n="store.cta">Auf Garmin Connect IQ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              </div>
+            </div>
+          </li>
+          <li class="face-card reveal">
+            <div class="face-card__art">
+              <img src="assets/img/faces/neonflow.webp" width="400" height="400" loading="lazy" alt="Vorschau von NeonFlow auf einer runden Uhr" data-i18n-attr="alt:wf.alt" data-i18n-name="NeonFlow">
+              <span class="face-card__num">02 / Watch Face</span>
+            </div>
+            <div class="face-card__body">
+              <p class="face-card__note" data-i18n="wf.note">Vorschau mit Beispieldaten.</p>
+              <h3>NeonFlow</h3>
+              <p class="face-card__short" data-i18n="wf.nf.short">Große Neon-Ziffern für die Uhrzeit, ein Sekundenring, 8 Farben und 5 Felder nach deiner Wahl, an der Uhr oder in der Connect-IQ-App.</p>
+              <ul class="tags" data-i18n="wf.nf.tags"><li>Neon-Ziffern</li><li>Sekundenring</li><li>8 Farben</li><li>Schwarz oder weiß</li></ul>
+              <div class="face-card__foot">
+                <span class="face-card__price" data-i18n="wf.free">Kostenlos</span>
+                <a class="btn" href="https://apps.garmin.com/apps/804b047e-5084-45c7-acfe-28d45326b870" target="_blank" rel="noopener noreferrer" aria-label="NeonFlow auf Garmin Connect IQ öffnen (neuer Tab)" data-i18n-attr="aria-label:wf.open" data-i18n-name="NeonFlow"><span data-i18n="store.cta">Auf Garmin Connect IQ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              </div>
+            </div>
+          </li>
+          <li class="face-card reveal">
+            <div class="face-card__art">
+              <img src="assets/img/faces/cyberfuture.webp" width="400" height="400" loading="lazy" alt="Vorschau von Cyber Future auf einer runden Uhr" data-i18n-attr="alt:wf.alt" data-i18n-name="Cyber Future">
+              <span class="face-card__num">03 / Watch Face</span>
+            </div>
+            <div class="face-card__body">
+              <p class="face-card__note" data-i18n="wf.note">Vorschau mit Beispieldaten.</p>
+              <h3>Cyber Future</h3>
+              <p class="face-card__short" data-i18n="wf.cf.short">Futuristisches HUD-Zifferblatt: Sekundenskala mit wanderndem Punkt, große Uhrzeit, großes Wetter und zwei Fortschrittsringe.</p>
+              <ul class="tags" data-i18n="wf.cf.tags"><li>HUD-Stil</li><li>Sekundenskala mit Punkt</li><li>Großes Wetter</li><li>5 Akzentfarben</li></ul>
+              <div class="face-card__foot">
+                <span class="face-card__price" data-i18n="wf.free">Kostenlos</span>
+                <a class="btn" href="https://apps.garmin.com/apps/83641038-9e69-4d64-aabd-38426fa6fb5d" target="_blank" rel="noopener noreferrer" aria-label="Cyber Future auf Garmin Connect IQ öffnen (neuer Tab)" data-i18n-attr="aria-label:wf.open" data-i18n-name="Cyber Future"><span data-i18n="store.cta">Auf Garmin Connect IQ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              </div>
+            </div>
+          </li>
+          <li class="face-card reveal">
+            <div class="face-card__art">
+              <img src="assets/img/faces/neoncyborg.webp" width="400" height="400" loading="lazy" alt="Vorschau von Neon Cyborg auf einer runden Uhr" data-i18n-attr="alt:wf.alt" data-i18n-name="Neon Cyborg">
+              <span class="face-card__num">04 / Watch Face</span>
+            </div>
+            <div class="face-card__body">
+              <p class="face-card__note" data-i18n="wf.note">Vorschau mit Beispieldaten.</p>
+              <h3>Neon Cyborg</h3>
+              <p class="face-card__short" data-i18n="wf.nc.short">Ein Cyborg-Polizist unter leuchtenden Neon-Ziffern, zwei Datenfelder mit Ziel-Linien, Uhrzeit in 24 h und 8 Neon-Farben.</p>
+              <ul class="tags" data-i18n="wf.nc.tags"><li>Cyborg-Polizist</li><li>Ziel-Linien</li><li>Schlagendes Herz</li><li>8 Neon-Farben</li></ul>
+              <div class="face-card__foot">
+                <span class="face-card__price" data-i18n="wf.free">Kostenlos</span>
+                <a class="btn" href="https://apps.garmin.com/apps/a1bdb5ef-a4bf-4a43-ad7c-d0df45ee26b5" target="_blank" rel="noopener noreferrer" aria-label="Neon Cyborg auf Garmin Connect IQ öffnen (neuer Tab)" data-i18n-attr="aria-label:wf.open" data-i18n-name="Neon Cyborg"><span data-i18n="store.cta">Auf Garmin Connect IQ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              </div>
+            </div>
+          </li>
+          <li class="face-card reveal">
+            <div class="face-card__art">
+              <img src="assets/img/faces/neonfrosh.webp" width="400" height="400" loading="lazy" alt="Vorschau von Neon Frosh auf einer runden Uhr" data-i18n-attr="alt:wf.alt" data-i18n-name="Neon Frosh">
+              <span class="face-card__num">05 / Watch Face</span>
+            </div>
+            <div class="face-card__body">
+              <p class="face-card__note" data-i18n="wf.note">Vorschau mit Beispieldaten.</p>
+              <h3>Neon Frosh</h3>
+              <p class="face-card__short" data-i18n="wf.fr.short">Kräftige zweifarbige Uhrzeit, sechs frei wählbare Datenfelder, acht Farben, hell oder dunkel.</p>
+              <ul class="tags" data-i18n="wf.fr.tags"><li>Zweifarbige Uhrzeit</li><li>6 Datenfelder</li><li>Fortschrittsringe</li><li>Hell oder dunkel</li></ul>
+              <div class="face-card__foot">
+                <span class="face-card__price" data-i18n="wf.free">Kostenlos</span>
+                <a class="btn" href="https://apps.garmin.com/apps/c3f1d717-676f-451a-ad0b-84d52e72ad90" target="_blank" rel="noopener noreferrer" aria-label="Neon Frosh auf Garmin Connect IQ öffnen (neuer Tab)" data-i18n-attr="aria-label:wf.open" data-i18n-name="Neon Frosh"><span data-i18n="store.cta">Auf Garmin Connect IQ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="cta-titel">
       <div class="wrap">
         <div class="cta ice reveal">
           <div>
-            <span class="badge">Gestaltet von CodeBear</span>
-            <h2 id="cta-titel">Frohe Weihnachten <span class="x">am Handgelenk</span></h2>
-            <p>Ein Schlüssel, alle Einstellungen, zwei Aktivierungen.</p>
+            <span class="badge" data-i18n="cta.badge">Gestaltet von CodeBear</span>
+            <h2 id="cta-titel" data-i18n="cta.title">Frohe Weihnachten <span class="x">am Handgelenk</span></h2>
+            <p data-i18n="cta.text">Ein Schlüssel, alle Einstellungen, zwei Aktivierungen.</p>
           </div>
-          <div class="cta__buy">
+          <div class="cta__buy" data-buy-box>
             <div class="price-card__row">
-              <span class="price">2,49 <small>€</small></span>
+              <span class="price" data-i18n="price.amount">2,49 <small>€</small></span>
               <span class="badge badge--accent">Demo</span>
             </div>
             <label class="consent">
               <input type="checkbox" data-consent aria-describedby="consent-note-2">
-              <span>Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen. Ich verwende nur Testdaten.</span>
+              <span data-i18n="consent">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen. Ich verwende nur Testdaten.</span>
             </label>
             <p class="buy-note" id="consent-note-2" data-consent-note aria-live="polite" hidden></p>
-            <a class="btn btn--xl" data-buy href="#kaufen">
-              Buy now
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
+            <div class="buy-row">
+              <a class="btn btn--xl" data-buy href="#kaufen">
+                Buy now
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="btn btn--xl btn--outline" data-store-link href="#" target="_blank" rel="noopener noreferrer" hidden>
+                <span data-i18n="store.cta">Auf Garmin Connect IQ</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
             <p class="buy-note" data-buy-note hidden></p>
-            <p data-store hidden><a class="btn btn--outline" data-store-link href="#">Im Connect IQ Store ansehen</a></p>
           </div>
         </div>
       </div>
@@ -302,21 +435,44 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <a class="brand" href="index.html" aria-label="CodeBear, zur Startseite des Shops">
-        <span class="brand__mark" aria-hidden="true"><img class="bear" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""></span>
+      <!-- Board: CodeBear watch faces in the Connect IQ store (as at the bottom of the CodeBear Garmin dashboard) -->
+      <aside class="wfad" aria-labelledby="wfad-h">
+        <div class="wfad__text">
+          <p class="wfad__tag" data-i18n="board.tag">Werbung</p>
+          <div class="wfad__brand">
+            <span class="brand">
+              <span class="brand__mark" aria-hidden="true"><img class="bear bear--light" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""><img class="bear bear--dark" src="assets/img/brand/bear-dark.png" width="17" height="40" alt=""></span>
+              <span class="brand__name"><span class="brand__code">Code</span><span class="brand__bear">Bear</span></span>
+            </span>
+          </div>
+          <h2 id="wfad-h" class="wfad__title" data-i18n="board.title">Watch Faces im Garmin Connect IQ Store</h2>
+          <p class="wfad__intro" data-i18n="board.intro">Gestaltet von CodeBear. Schau dir unsere Watch Faces für deine Garmin-Uhr an.</p>
+        </div>
+        <ul class="wfad__list">
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/88c07f1d-4e6c-4d9b-85cf-b0678328d7af" target="_blank" rel="noopener noreferrer" aria-label="GasDefizit im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="GasDefizit"><img class="wfad__img" src="assets/img/faces/gasdefizit.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">GasDefizit</span></a></li>
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/804b047e-5084-45c7-acfe-28d45326b870" target="_blank" rel="noopener noreferrer" aria-label="NeonFlow im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="NeonFlow"><img class="wfad__img" src="assets/img/faces/neonflow.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">NeonFlow</span></a></li>
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/83641038-9e69-4d64-aabd-38426fa6fb5d" target="_blank" rel="noopener noreferrer" aria-label="Cyber Future im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="Cyber Future"><img class="wfad__img" src="assets/img/faces/cyberfuture.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">Cyber Future</span></a></li>
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/a1bdb5ef-a4bf-4a43-ad7c-d0df45ee26b5" target="_blank" rel="noopener noreferrer" aria-label="Neon Cyborg im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="Neon Cyborg"><img class="wfad__img" src="assets/img/faces/neoncyborg.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">Neon Cyborg</span></a></li>
+          <li><a class="wfad__link" href="https://apps.garmin.com/apps/c3f1d717-676f-451a-ad0b-84d52e72ad90" target="_blank" rel="noopener noreferrer" aria-label="Neon Frosh im Garmin Connect IQ Store öffnen (neuer Tab)" data-i18n-attr="aria-label:board.open" data-i18n-name="Neon Frosh"><img class="wfad__img" src="assets/img/faces/neonfrosh.webp" width="88" height="88" loading="lazy" alt=""><span class="wfad__name">Neon Frosh</span></a></li>
+        </ul>
+      </aside>
+
+      <a class="brand" href="index.html" aria-label="CodeBear, zur Startseite des Shops" data-i18n-attr="aria-label:brand.home">
+        <span class="brand__mark" aria-hidden="true"><img class="bear bear--light" src="assets/img/brand/bear-light.png" width="17" height="40" alt=""><img class="bear bear--dark" src="assets/img/brand/bear-dark.png" width="17" height="40" alt=""></span>
         <span class="brand__name"><span class="brand__code">Code</span><span class="brand__bear">Bear</span></span>
       </a>
-      <p><strong>Testmodus, kein echter Shop.</strong> Studienprojekt an der Technischen Hochschule Augsburg, Kurs „Design und Implementierung e-Shop“.</p>
-      <nav aria-label="Rechtliches">
-        <a href="nutzungsbedingungen.html">Nutzungsbedingungen und Lizenz</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="datenschutz.html#impressum">Impressum</a>
+      <p data-i18n="foot.study"><strong>Testmodus, kein echter Shop.</strong> Studienprojekt an der Technischen Hochschule Augsburg, Kurs „Design und Implementierung e-Shop“.</p>
+      <nav aria-label="Rechtliches" data-i18n-attr="aria-label:foot.legalLabel">
+        <a href="nutzungsbedingungen.html" data-i18n="foot.terms">Nutzungsbedingungen und Lizenz</a>
+        <a href="datenschutz.html" data-i18n="foot.privacy">Datenschutz</a>
+        <a href="datenschutz.html#impressum" data-i18n="foot.imprint">Impressum</a>
       </nav>
-      <p>Kein offizielles Garmin-Produkt. Garmin, Connect IQ, Forerunner, fēnix, epix, Venu und vívoactive sind Marken von Garmin Ltd. oder ihren Tochtergesellschaften. Keine Cookies, keine Analyse-Tools.</p>
+      <p data-i18n="foot.marks">Kein offizielles Garmin-Produkt. Garmin, Connect IQ, Forerunner, fēnix, epix, Venu und vívoactive sind Marken von Garmin Ltd. oder ihren Tochtergesellschaften. Keine Cookies, keine Analyse-Tools.</p>
     </div>
   </footer>
 
   <script src="config.js"></script>
+  <script src="i18n.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

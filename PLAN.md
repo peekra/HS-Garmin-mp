@@ -76,3 +76,15 @@ bleibt kurz: Studienprojekt der THA, ohne Name und Anschrift. Prüfen: Lehrperso
 - Nach „Zurück“ im Browser passen Haken und Button zusammen.
 - Handybreite 360 px, keine Konsolenfehler.
 - Testkauf mit Testkarte (führt der User aus).
+
+## B: Hell/Dunkel, DE/EN, Schnee, Watch-Face-Karten, Board, neue Bilder (umgesetzt 27.11.2026)
+
+Entscheidungen und Umfang: siehe CLAUDE.md, Abschnitt „Erweiterung (User, 27.11.2026)“. Im Browser geprüft:
+Dunkel/Hell × DE/EN, 360 px und 1024 px ohne waagerechtes Scrollen, Wahl bleibt über Seiten und Neuladen, Seite läuft
+mit gesperrtem Speicher, alle Fälle von `erfolg.html` auf Englisch (Sprachwechsel behält die Schlüssel), Haken-Sperre
+an beiden Kauf-Buttons, Store-Knopf mit Testwert sichtbar und ohne Wert unsichtbar, Szenenauswahl (25 Kacheln,
+Band bleibt beim Scrollen oben), keine Anfragen an fremde Server.
+
+Offen (User):
+- Store-Link von GasDefizit XMas in `demo/config.js` bei `STORE_URL` eintragen, dann erscheint der Knopf.
+- Nach dem Push prüfen, ob die Link-Vorschau das neue Bild zeigt (Messenger speichern alte Vorschauen zwischen).

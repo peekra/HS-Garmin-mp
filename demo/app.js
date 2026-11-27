@@ -1,25 +1,33 @@
-// Product page: buy link from config.js, live roller counter, scene gallery, scroll reveal.
+// Product page: buy link from config.js, store button, live roller counter, scene picker, scroll reveal.
+// Texts in two languages come from i18n.js (I18N.t); the page listens to "cb:lang" from prefs.js.
 (function () {
   "use strict";
 
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function t(key, vars) {
+    return window.I18N ? window.I18N.t(key, vars) : key;
+  }
+  function onLang(fn) {
+    document.addEventListener("cb:lang", fn);
+  }
+
   // ---------- Buy link ----------
 
-  // Returns the payment link with redirect_url set to erfolg.html next to this page, or null with a reason.
+  // Returns the payment link with redirect_url set to erfolg.html next to this page, or null with a reason key.
   function buildBuyUrl() {
     var raw = typeof PAYMENT_LINK === "string" ? PAYMENT_LINK.trim() : "";
     if (!raw || raw.indexOf("DEIN_PRODUKT") !== -1) {
-      return { url: null, reason: "Der Payment Link fehlt noch: bitte in config.js eintragen." };
+      return { url: null, reason: "buy.missing" };
     }
     var url;
     try {
       url = new URL(raw);
     } catch (e) {
-      return { url: null, reason: "Der Payment Link in config.js ist keine gültige Adresse." };
+      return { url: null, reason: "buy.invalid" };
     }
     if (url.protocol !== "https:") {
-      return { url: null, reason: "Der Payment Link in config.js muss mit https:// beginnen." };
+      return { url: null, reason: "buy.https" };
     }
     if (!url.searchParams.has("redirect_url") && /^https?:$/.test(location.protocol)) {
       url.searchParams.set("redirect_url", new URL("erfolg.html", location.href).href);
@@ -42,18 +50,24 @@
         btn.addEventListener("click", function (ev) { ev.preventDefault(); });
       }
     }
-    for (var j = 0; j < notes.length; j++) {
-      notes[j].hidden = !result.reason;
-      notes[j].textContent = result.reason || "";
+    function showReason() {
+      for (var j = 0; j < notes.length; j++) {
+        notes[j].hidden = !result.reason;
+        notes[j].textContent = result.reason ? t(result.reason) : "";
+      }
     }
+    showReason();
+    onLang(showReason);
   }
 
   // The buy button leads to the checkout only while its checkbox (privacy notice read, test data only) is ticked.
   // Unticked, the link points to the price card, so middle click or "copy link" do not reach the checkout either.
   // The page neither stores nor sends the tick. Opening the payment link directly still bypasses it.
+  // Button, checkbox and note share one box ([data-buy-box]); the button itself sits in a row with the store button.
   function setupConsent(btn, url) {
-    var box = btn.parentNode.querySelector("[data-consent]");
-    var note = btn.parentNode.querySelector("[data-consent-note]");
+    var scope = btn.closest("[data-buy-box]") || btn.parentNode;
+    var box = scope.querySelector("[data-consent]");
+    var note = scope.querySelector("[data-consent-note]");
     if (!box) {
       btn.href = url;
       return;
@@ -79,7 +93,7 @@
       }
       ev.preventDefault();
       if (note) {
-        note.textContent = "Bitte setze zuerst den Haken: Datenschutzerklärung gelesen, nur Testdaten.";
+        note.textContent = t("buy.consent");
         note.hidden = false;
       }
       box.focus();
@@ -87,18 +101,25 @@
     box.addEventListener("change", sync);
     // the browser may restore the tick after "back"
     window.addEventListener("pageshow", sync);
+    onLang(function () {
+      if (note && !note.hidden) {
+        note.textContent = t("buy.consent");
+      }
+    });
     sync();
   }
 
+  // Store button next to each "Buy now": shown only once STORE_URL in config.js holds an https address.
   function setupStoreLink() {
     var url = typeof STORE_URL === "string" ? STORE_URL.trim() : "";
-    var box = document.querySelector("[data-store]");
-    var link = document.querySelector("[data-store-link]");
-    if (!box || !link || !/^https:\/\//.test(url)) {
+    if (!/^https:\/\//.test(url)) {
       return;
     }
-    link.href = url;
-    box.hidden = false;
+    var links = document.querySelectorAll("[data-store-link]");
+    for (var i = 0; i < links.length; i++) {
+      links[i].href = url;
+      links[i].hidden = false;
+    }
   }
 
   // ---------- Roller counter (live clock, HH:MM and seconds) ----------
@@ -122,6 +143,7 @@
       wheels[Number(all[i].getAttribute("data-wheel"))] = { strip: strip, value: -1 };
       strip.addEventListener("transitionend", onRollEnd);
     }
+    var label = "";
 
     function onRollEnd(ev) {
       var strip = ev.currentTarget;
@@ -149,6 +171,10 @@
       w.strip.style.setProperty("--i", String(target));
     }
 
+    function announce() {
+      meter.setAttribute("aria-label", t("meter.label", { time: label }));
+    }
+
     function tick(animate) {
       var now = new Date();
       var parts = [now.getHours(), now.getMinutes(), now.getSeconds()];
@@ -156,13 +182,17 @@
         show(p * 2, Math.floor(parts[p] / 10), animate);
         show(p * 2 + 1, parts[p] % 10, animate);
       }
-      var label = pad(parts[0]) + ":" + pad(parts[1]);
-      meter.setAttribute("aria-label", "Zählwerk mit der aktuellen Uhrzeit " + label + " Uhr");
+      var next = pad(parts[0]) + ":" + pad(parts[1]);
+      if (next !== label) {
+        label = next;
+        announce();
+      }
     }
 
     function pad(n) { return (n < 10 ? "0" : "") + n; }
 
     tick(false);
+    onLang(announce);
     void meter.offsetHeight;
     for (var k = 0; k < wheels.length; k++) {
       if (wheels[k] && !reduceMotion) {
@@ -176,15 +206,15 @@
     }, 1000 - (Date.now() % 1000) + 5);
   }
 
-  // ---------- Scene gallery (the first tile, Santa, is in the HTML) ----------
+  // ---------- Scene picker: 25 tiles (Santa is in the HTML), the picked one flies through the band above ----------
 
-  var SCENES = [
-    "Santa am Laptop", "Rentier mit Kopfhörern", "Santa am Computer", "Rentier mit VR-Brille",
-    "Santa am Switch", "Platinen-Baum", "Router-Kugel", "USB-Stiefel", "Power-Geschenk", "Rentier am Laptop",
-    "Nerd-Schneemann", "Zahnrad-Schneeflocke", "Laterne", "Server-Rack", "Binärkerze", "Kaffee „Loading“",
-    "Lebkuchenhaus", "Code-Kalender", "Handschuhe", "Zuckerstange", "Raketenschlitten", "Notenbuch",
-    "Cloud-Sack", "Brief an Santa"
-  ];
+  function sceneName(n) {
+    return t("scene." + n);
+  }
+
+  function sceneSrc(n) {
+    return "assets/img/scenes/scene" + (n < 10 ? "0" : "") + n + ".webp";
+  }
 
   function setupScenes() {
     var list = document.querySelector("[data-scenes]");
@@ -192,28 +222,76 @@
       return;
     }
     var frag = document.createDocumentFragment();
-    for (var i = 0; i < SCENES.length; i++) {
-      var n = i + 1;
+    for (var n = 1; n <= 24; n++) {
       var li = document.createElement("li");
-      li.className = "scene";
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "scene";
+      btn.setAttribute("data-scene", String(n));
+      btn.setAttribute("aria-pressed", "false");
       var no = document.createElement("span");
       no.className = "scene__no";
       no.textContent = String(n);
       var img = document.createElement("img");
-      img.src = "assets/img/scenes/scene" + (n < 10 ? "0" : "") + n + ".webp";
+      img.src = sceneSrc(n);
       img.width = 240;
       img.height = 240;
       img.loading = "lazy";
       img.alt = "";
       var name = document.createElement("span");
       name.className = "scene__name";
-      name.textContent = SCENES[i];
-      li.appendChild(no);
-      li.appendChild(img);
-      li.appendChild(name);
+      btn.appendChild(no);
+      btn.appendChild(img);
+      btn.appendChild(name);
+      li.appendChild(btn);
       frag.appendChild(li);
     }
     list.appendChild(frag);
+
+    var tiles = list.querySelectorAll("[data-scene]");
+    var flyer = document.querySelector("[data-scene-flyer]");
+    var flyerImg = flyer ? flyer.querySelector("img") : null;
+    var nameLine = document.querySelector("[data-scene-name]");
+    var current = 0;
+
+    function relabel() {
+      for (var i = 0; i < tiles.length; i++) {
+        var k = Number(tiles[i].getAttribute("data-scene"));
+        tiles[i].querySelector(".scene__name").textContent = sceneName(k);
+      }
+      if (nameLine) {
+        nameLine.textContent = current + " · " + sceneName(current);
+      }
+    }
+
+    function pick(n) {
+      current = n;
+      for (var i = 0; i < tiles.length; i++) {
+        tiles[i].setAttribute("aria-pressed", tiles[i].getAttribute("data-scene") === String(n) ? "true" : "false");
+      }
+      if (flyer && flyerImg) {
+        flyerImg.src = sceneSrc(n);
+        flyerImg.width = n === 0 ? 520 : 240;
+        flyerImg.height = n === 0 ? 154 : 240;
+        flyer.classList.toggle("flyer--square", n !== 0);
+        // start the run again from the left
+        flyer.style.animation = "none";
+        void flyer.offsetWidth;
+        flyer.style.animation = "";
+      }
+      if (nameLine) {
+        nameLine.textContent = n + " · " + sceneName(n);
+      }
+    }
+
+    list.addEventListener("click", function (ev) {
+      var tile = ev.target.closest("[data-scene]");
+      if (tile && list.contains(tile)) {
+        pick(Number(tile.getAttribute("data-scene")));
+      }
+    });
+    relabel();
+    onLang(relabel);
   }
 
   // ---------- Reveal on scroll ----------

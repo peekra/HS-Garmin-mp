@@ -9,17 +9,32 @@ Freischaltung der Garmin-Watch-Face **GasDefizit XMas**. Bezahlt wird über **Do
 
 | Datei | Zweck |
 |---|---|
-| `demo/index.html` | Produktseite: Vorschau, gesperrt/frei, Funktionen, 25 Szenen, Preis, „Buy now“ |
+| `demo/index.html` | Produktseite: Vorschau, gesperrt/frei, Funktionen, 25 Szenen zum Anklicken, Preis, „Buy now“, Karten der anderen CodeBear-Watch-Faces |
 | `demo/erfolg.html` | Seite nach der Zahlung: zeigt `license_key` aus der Adresse mit „Schlüssel kopieren“ |
 | `index.html` | leitet von der Repo-Adresse auf `demo/` weiter |
 | `demo/datenschutz.html` | Datenschutz und Impressum (Entwurf für die Studienarbeit) |
 | `demo/nutzungsbedingungen.html` | Nutzungsbedingungen und Lizenz |
 | `demo/config.js` | `PAYMENT_LINK` (Dodo Payment Link), optional `STORE_URL` |
+| `demo/prefs.js` | Hell/Dunkel und Sprache (im `<head>` jeder Seite), merkt die Wahl nach einem Klick im `localStorage` |
+| `demo/i18n.js` | englische Texte (Deutsch steht im HTML), Texte der Skripte in beiden Sprachen |
 | `demo/app.js`, `demo/erfolg.js`, `demo/style.css` | Verhalten und Aussehen |
 | `demo/assets/` | Bilder (WebP) und selbst gehostete Schriften (OFL, Lizenztexte daneben) |
-| `tools/render_web_assets.swift` | erzeugt die Uhrenbilder aus `../Weinachten_GasDefizit/design/promo_captures` |
+| `tools/web_assets/` | erzeugt die Uhrenbilder aus `../Weinachten_GasDefizit/design/promo_captures` |
+| `tools/og.html` | Vorlage des Vorschaubilds `og_codebear_1200x630.jpg` |
 
-Nur HTML, CSS und JavaScript: kein Build, kein Server, keine API-Schlüssel. Alle Links sind relativ.
+Nur HTML, CSS und JavaScript: kein Build, kein Server, keine API-Schlüssel. Links innerhalb des Shops sind relativ,
+nur die Vorschau-Angaben (`og:image`, `og:url`) nennen die volle GitHub-Pages-Adresse.
+
+## Hell/Dunkel, Sprache, Schnee
+
+- Beim ersten Besuch: Farbmodus wie das System (Dunkel ist Standard), Sprache nach Browser (`de…` = Deutsch, sonst
+  Englisch). Die runden Knöpfe oben rechts schalten um; die Wahl gilt dann auf allen Seiten (`cb-theme`, `cb-lang`).
+- Neue Texte: Deutsch ins HTML mit `data-i18n="schlüssel"` (bzw. `data-i18n-attr="alt:schlüssel"`), Englisch in
+  `EN` in `demo/i18n.js`. Texte aus Skripten stehen in `MSG` (beide Sprachen).
+- Zählwerk, Santa-Band, Szenen-Band und Szenen-Kacheln bleiben in beiden Modi dunkel (`.dark-zone`).
+- Fallender Schnee (`.sky`): weiß auf Dunkel, grau auf Hell; bei „Weniger Bewegung“ steht er still.
+- Die Store-Links der fünf Watch Faces (Karten und Board unten) stehen fest im HTML. Der Knopf „Auf Garmin Connect IQ“
+  neben „Buy now“ erscheint erst, wenn `STORE_URL` in `demo/config.js` gefüllt ist.
 
 ## Dodo Payments einrichten (Testmodus)
 
@@ -61,20 +76,30 @@ Fälle der Erfolgsseite zum Ausprobieren:
 2. Settings › Pages › Source: „Deploy from a branch“, Branch `main`, Ordner `/ (root)`.
 3. Die Seite liegt dann unter `https://<name>.github.io/<repo>/demo/`. Die Repo-Adresse ohne `demo/` leitet
    dorthin weiter (`index.html`). `.nojekyll` schaltet die Jekyll-Verarbeitung von GitHub ab.
-4. Optional: In `demo/index.html` `og:image` auf die volle Adresse des Bildes setzen, damit Link-Vorschauen das Bild
-   zeigen (manche Dienste lesen keine relativen Pfade).
+4. `og:image` und `og:url` nennen die volle Adresse `https://peekra.github.io/HS-Garmin-mp/demo/…`. Bei anderem
+   Repo-Namen dort anpassen (vier HTML-Dateien). Messenger speichern Vorschauen zwischen; ein neues Bild bekommt
+   deshalb einen neuen Dateinamen.
 
 
 ## Bilder neu erzeugen
 
 ```bash
-swiftc -O tools/render_web_assets.swift -o /tmp/render_web_assets && /tmp/render_web_assets
+swiftc -O tools/web_assets/*.swift -o /tmp/web_assets && /tmp/web_assets
 cd demo/assets/img && for f in watch_hero watch_free watch_unlocked; do cwebp -q 82 -alpha_q 90 -m 6 $f.png -o $f.webp && rm $f.png; done
 ```
 
-Die Szenenbilder (`scenes/sceneNN.webp`, 240 px, Santa 520 px breit), das Vorschaubild `og_1200x630.jpg`
-(aus `../Weinachten_GasDefizit/design/website/de/06_social_1200x630.png`) und `favicon.png` sind mit `cwebp` bzw.
-`sips` aus den Bildern der Watch-Face erzeugt.
+Das Gehäuse (`tools/web_assets/WatchDraw.swift`) ist eine Kopie von `../design/drafts/store_tools/lib/WatchDraw.swift`,
+wie bei den Store-Icons der anderen Watch Faces, mit schwarzem Armband.
+
+Die Icons der Watch-Face-Karten (`faces/*.webp`, 400 px) sind mit `cwebp -resize 400 400` aus `design/store/icon_500.png`
+der Projekte erzeugt: GasDefizit (`../design/store`), NeonFlow (`../NeonFlow`), Cyber Future
+(`../../Watch Faces/Simple Skill`), Neon Cyborg (`../Robocop`), Neon Frosh (`../../Watch Faces/Neon Frosh`).
+
+Vorschaubild: `tools/og.html` über `npm run dev` öffnen (http://127.0.0.1:8765/tools/og.html), Fenster 1200 × 630,
+Bildschirmfoto als PNG, dann `sips -s format jpeg -s formatOptions 85 og.png --out demo/assets/img/og_codebear_1200x630.jpg`.
+
+Die Szenenbilder (`scenes/sceneNN.webp`, 240 px, Santa 520 px breit) und `favicon.png` sind mit `cwebp` bzw. `sips`
+aus den Bildern der Watch-Face erzeugt.
 
 ## Rechtliches
 

@@ -1,8 +1,14 @@
 // Success page: reads the parameters Dodo Payments appends to redirect_url (status, payment_id, email,
 // license_key) and shows the license key with a copy button. All values are inserted as text, never as HTML.
 // This page proves nothing: anyone can type such an address. The key is checked later on the watch.
+// Texts in two languages come from i18n.js (I18N.t); a language switch ("cb:lang") relabels without reloading,
+// so the keys stay on the page.
 (function () {
   "use strict";
+
+  function t(key, vars) {
+    return window.I18N ? window.I18N.t(key, vars) : key;
+  }
 
   var params = new URLSearchParams(location.search);
 
@@ -51,17 +57,38 @@
   if (state === "failed") {
     document.querySelector("[data-retry]").hidden = false;
   }
+
+  // Elements whose text depends on the language: relabel() fills them now and after each switch.
+  var boxes = [];
+  var copyState = [];   // per key: "" | "copied" | "selected"
+
   if (state === "success") {
     renderKeys();
-    document.title = "Zahlung erfolgreich – GasDefizit XMas · CodeBear Demo-Shop";
+  }
+  relabel();
+  document.addEventListener("cb:lang", relabel);
+
+  function relabel() {
+    if (state !== "success") {
+      return;
+    }
+    // the <title> element carries data-i18n for the default title; the success title replaces it
+    document.title = t("ok.titleSuccess");
+    document.querySelector("[data-key-intro]").textContent = t(keys.length > 1 ? "ok.introMany" : "ok.introOne");
+    boxes.forEach(function (b, i) {
+      b.label.textContent = keys.length > 1 ? t("ok.keyN", { n: i + 1 }) : t("ok.keyOne");
+      b.button.textContent = keys.length > 1 ? t("ok.copyN", { n: i + 1 }) : t("ok.copy");
+      b.feedback.textContent = copyState[i] === "copied" ? t("ok.copied") : copyState[i] === "selected" ? t("ok.selected") : "";
+    });
+    if (paymentId) {
+      var meta = document.querySelector("[data-payment]");
+      meta.textContent = t("ok.paymentId", { id: paymentId });
+      meta.hidden = false;
+    }
   }
 
   function renderKeys() {
     var list = document.querySelector("[data-keys]");
-    if (keys.length > 1) {
-      document.querySelector("[data-key-intro]").textContent =
-        "Deine Lizenzschlüssel für GasDefizit XMas. Jeder gilt für 2 Aktivierungen. Kopiere sie jetzt: Mit erfundener E-Mail-Adresse kommt keine E-Mail an.";
-    }
     keys.forEach(function (key, i) {
       var li = document.createElement("li");
       li.className = "keybox ice";
@@ -69,7 +96,6 @@
       var label = document.createElement("span");
       label.className = "keybox__label";
       label.id = "key-label-" + i;
-      label.textContent = keys.length > 1 ? "Lizenzschlüssel " + (i + 1) : "Dein Lizenzschlüssel";
 
       var code = document.createElement("code");
       code.className = "keybox__key";
@@ -81,16 +107,19 @@
 
       var button = document.createElement("button");
       button.type = "button";
-      button.className = "btn btn--gold";
-      button.textContent = keys.length > 1 ? "Schlüssel " + (i + 1) + " kopieren" : "Schlüssel kopieren";
+      button.className = "btn";
 
       var feedback = document.createElement("span");
       feedback.className = "copy-status";
       feedback.setAttribute("role", "status");
       feedback.setAttribute("aria-live", "polite");
 
+      copyState[i] = "";
       button.addEventListener("click", function () {
-        copy(key, code, feedback);
+        copy(key, code, function (result) {
+          copyState[i] = result;
+          feedback.textContent = result === "copied" ? t("ok.copied") : t("ok.selected");
+        });
       });
 
       actions.appendChild(button);
@@ -99,19 +128,11 @@
       li.appendChild(code);
       li.appendChild(actions);
       list.appendChild(li);
+      boxes.push({ label: label, button: button, feedback: feedback });
     });
-
-    if (paymentId) {
-      var meta = document.querySelector("[data-payment]");
-      meta.textContent = "Zahlungs-ID: " + paymentId;
-      meta.hidden = false;
-    }
   }
 
-  function copy(text, element, feedback) {
-    function done() {
-      feedback.textContent = "Kopiert. Jetzt in der Connect-IQ-App einfügen.";
-    }
+  function copy(text, element, report) {
     function fallback() {
       selectText(element);
       var copied = false;
@@ -120,14 +141,10 @@
       } catch (e) {
         copied = false;
       }
-      if (copied) {
-        done();
-      } else {
-        feedback.textContent = "Markiert. Mit Strg+C bzw. ⌘+C kopieren.";
-      }
+      report(copied ? "copied" : "selected");
     }
     if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(done, fallback);
+      navigator.clipboard.writeText(text).then(function () { report("copied"); }, fallback);
     } else {
       fallback();
     }

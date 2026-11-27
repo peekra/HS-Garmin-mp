@@ -17,9 +17,10 @@ Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen au
 ## Vorgaben (User, 27.11.2026)
 
 - Nur HTML, CSS, JavaScript. Kein Server, kein Build, keine API-Schlüssel im Code.
-- GitHub Pages, Ordner `/demo`, nur relative Links.
+- GitHub Pages, Ordner `/demo`, relative Links im Shop. Ausnahme: `og:image`/`og:url` mit voller Adresse
+  `https://peekra.github.io/HS-Garmin-mp/demo/…` (sonst laden manche Dienste die Vorschau nicht).
 - Payment Link als **eine Konstante oben in `demo/config.js`** (`PAYMENT_LINK`).
-- Deutsch, dunkles Design, mobil lesbar. Seit 27.11.2026 im **CodeBear-Stil** (User): Logo und Tokens aus
+- Mobil lesbar. Seit 27.11.2026 im **CodeBear-Stil** (User): Logo und Tokens aus
   `../../Garmin Dashboard` (Grafit, Körnung, Big Shoulders Display, Instrument Sans, JetBrains Mono).
   **Hauptfarbe ist das Logo-Orange `#ff4d0a`** (User, 27.11.2026), nicht das Grün `#c8f53c` des Dashboards.
   Vorherige Fassung „Winternacht“: Tag `design-winternacht`.
@@ -42,6 +43,27 @@ Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen au
 - `erfolg.html` zeigt **nur den Dodo-Schlüssel**. Der feste Code der Watch-Face steht **nirgends** auf der Webseite.
 - Schriften und Bären-Logo selbst gehostet (`demo/assets/fonts/`, OFL; `demo/assets/img/brand/`), keine Anfragen an fremde Server außer dem Dodo-Checkout.
 
+## Erweiterung (User, 27.11.2026, Plan freigegeben)
+
+- **Hell- und Dunkelmodus** wie im Garmin Dashboard (Sonne/Mond-Knopf), Hauptfarbe bleibt Orange. Kleine orange
+  Schrift im Hellmodus `#b83700` (`--accent-ink`). Zählwerk, Santa-Band, Szenen-Band und -Kacheln bleiben dunkel.
+- **Zweisprachig DE/EN** mit Knopf „EN“/„DE“. Start: Farbmodus wie System, Sprache nach Browser (`de…` = DE, sonst EN).
+  Die Wahl wird erst nach einem Klick im `localStorage` gemerkt (`cb-theme`, `cb-lang`, Satz in `datenschutz.html`).
+  Deutsch steht im HTML, Englisch in `demo/i18n.js`. Rechtstexte sind übersetzt, ohne neue Klauseln.
+- **Fallender Schnee** wie im ersten Design: weiß auf Dunkel, grau auf Hell, alle Seiten.
+- **Karten der CodeBear-Watch-Faces** (Abschnitt `#watchfaces` nach „Fragen“, Aufbau wie watchdial.mosooapp.com),
+  Knopf „Auf Garmin Connect IQ“ statt „Buy now“. Texte nur aus `design/store/listing_*.md` der Projekte, Icons aus
+  `icon_500.png`. Dazu unten auf allen Seiten das **Board** wie im Dashboard („Werbung“, Logo, 5 Icons):
+  GasDefizit `88c07f1d-4e6c-4d9b-85cf-b0678328d7af`, NeonFlow `804b047e-5084-45c7-acfe-28d45326b870`,
+  Cyber Future `83641038-9e69-4d64-aabd-38426fa6fb5d`, Neon Cyborg `a1bdb5ef-a4bf-4a43-ad7c-d0df45ee26b5`,
+  Neon Frosh `c3f1d717-676f-451a-ad0b-84d52e72ad90` (je `https://apps.garmin.com/apps/<ID>`).
+- **XMas im Connect IQ Store:** Knopf „Auf Garmin Connect IQ“ neben beiden „Buy now“. Noch kein Store-Link: unsichtbar,
+  bis `STORE_URL` in `demo/config.js` gefüllt ist.
+- **Szenen anklickbar:** Klick auf eine der 25 Kacheln lässt das Bild im Band über den Kacheln laufen (nur das Band,
+  User). Das Band bleibt beim Scrollen sichtbar.
+- **Neue Bilder:** Uhren im Gehäuse der Store-Icons mit schwarzem Armband, neues Vorschaubild
+  `og_codebear_1200x630.jpg` (deutsch, dunkel, CodeBear). Das alte `og_1200x630.jpg` ist gelöscht.
+
 ## Dodo (Testmodus, vom User, 27.11.2026)
 
 - Produkt „Watch Face Aktivierung“, ID `pdt_0Nso99dTIRu8KDlkyHrUO` (Teil B: Watch-Face prüft diese ID bei `activate`).
@@ -63,15 +85,14 @@ Eigenes lokales Git (Branch `main`, kein Remote, kein Push). Veröffentlichen au
 ```
 demo/index.html, erfolg.html, datenschutz.html, nutzungsbedingungen.html
 demo/config.js      PAYMENT_LINK (+ STORE_URL), sonst nichts
-demo/app.js         Buy-Link (ergänzt redirect_url), Zählwerk-Uhr, Santa-Flug
+demo/prefs.js       Hell/Dunkel und Sprache, im <head> jeder Seite
+demo/i18n.js        englische Texte (EN) und Texte der Skripte (MSG, beide Sprachen)
+demo/app.js         Buy-Link (ergänzt redirect_url), Store-Knopf, Zählwerk-Uhr, Szenenauswahl
 demo/erfolg.js      Parameter lesen, anzeigen, kopieren
 demo/style.css
-demo/assets/        img/ (aus tools/render_web_assets.swift), fonts/
-tools/render_web_assets.swift   Bilder aus ../Weinachten_GasDefizit/design/promo_captures
+demo/assets/        img/ (watch_*, faces/, scenes/, og_codebear_1200x630.jpg), fonts/
+tools/web_assets/   Uhrenbilder aus ../Weinachten_GasDefizit/design/promo_captures
+tools/og.html       Vorlage des Vorschaubilds
 ```
 
-Bilder neu erzeugen:
-
-```bash
-swiftc -O tools/render_web_assets.swift -o /tmp/render_web_assets && /tmp/render_web_assets
-```
+Bilder neu erzeugen: siehe README.md („Bilder neu erzeugen“).
