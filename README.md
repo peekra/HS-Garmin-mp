@@ -11,7 +11,9 @@ Freischaltung der Garmin-Watch-Face **GasDefizit XMas**. Bezahlt wird über **Do
 |---|---|
 | `demo/index.html` | Produktseite: Vorschau, gesperrt/frei, Funktionen, 25 Szenen, Preis, „Buy now“ |
 | `demo/erfolg.html` | Seite nach der Zahlung: zeigt `license_key` aus der Adresse mit „Schlüssel kopieren“ |
-| `demo/datenschutz.html` | Datenschutz und Impressum (Platzhaltertext) |
+| `index.html` | leitet von der Repo-Adresse auf `demo/` weiter |
+| `demo/datenschutz.html` | Datenschutz und Impressum (Entwurf für die Studienarbeit) |
+| `demo/nutzungsbedingungen.html` | Nutzungsbedingungen und Lizenz |
 | `demo/config.js` | `PAYMENT_LINK` (Dodo Payment Link), optional `STORE_URL` |
 | `demo/app.js`, `demo/erfolg.js`, `demo/style.css` | Verhalten und Aussehen |
 | `demo/assets/` | Bilder (WebP) und selbst gehostete Schriften (OFL, Lizenztexte daneben) |
@@ -57,11 +59,11 @@ Fälle der Erfolgsseite zum Ausprobieren:
 
 1. Repo auf GitHub anlegen und diesen Ordner hochladen.
 2. Settings › Pages › Source: „Deploy from a branch“, Branch `main`, Ordner `/ (root)`.
-3. Die Seite liegt dann unter `https://<name>.github.io/<repo>/demo/`.
+3. Die Seite liegt dann unter `https://<name>.github.io/<repo>/demo/`. Die Repo-Adresse ohne `demo/` leitet
+   dorthin weiter (`index.html`). `.nojekyll` schaltet die Jekyll-Verarbeitung von GitHub ab.
 4. Optional: In `demo/index.html` `og:image` auf die volle Adresse des Bildes setzen, damit Link-Vorschauen das Bild
    zeigen (manche Dienste lesen keine relativen Pfade).
 
-Vor einer Veröffentlichung die Platzhalter in `demo/datenschutz.html` (Impressum, Rechtsgrundlagen) ausfüllen.
 
 ## Bilder neu erzeugen
 
